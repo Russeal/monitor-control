@@ -538,8 +538,8 @@ form.logInForm {
 .collapsible li .collapsible-body {
     display: block;
     overflow: hidden;
-    -webkit-transition: all 500ms;
-    transition: all 500ms;
+    -webkit-transition: height 500ms;
+    transition: height 500ms;
 }
 
 .logo {
@@ -1642,4 +1642,16 @@ nav.navbar ul li a span.numb {
     .modal-open .modal-dialog {
         margin-top: calc(50vh - 50px);
     }
+}
+
+
+
+
+
+
+
+
+
+.fade:not(.show) {
+    opacity: 1;
 }

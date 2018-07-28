@@ -19,8 +19,6 @@ export class LogInComponent implements OnInit {
   constructor(private router: Router, private profileService: ProfileService) {}
 
   ngOnInit() {
-    console.log(this.login.length);
-    
   }
 
   authorization() {

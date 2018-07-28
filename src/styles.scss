@@ -536,9 +536,10 @@ form.logInForm {
 }
 
 .collapsible li .collapsible-body {
+    display: block;
     overflow: hidden;
-    -webkit-transition: height 500ms;
-    transition: height 500ms;
+    -webkit-transition: all 500ms;
+    transition: all 500ms;
 }
 
 .logo {

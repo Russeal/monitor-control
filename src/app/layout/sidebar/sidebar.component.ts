@@ -50,7 +50,6 @@ export class SidebarComponent implements OnInit {
 
   // Sub-menuni ochish
   changeSubMenu(st, id) {
-    // alert(st + 'subMenu' + id);
     if (document.getElementById(st + 'subMenu' + id).style.height !== '0px') {
       document.getElementById(st + 'boshMenu' + id).children[0].classList.remove('active');
       document.getElementById(st + 'subMenu' + id).style.height = '0px';

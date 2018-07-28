@@ -23,7 +23,6 @@ export class InProcessProjectsComponent implements OnInit {
     this.projectUtilService.getInProcessProjects().subscribe(
       (data) => {
         this.projects = data;
-        console.log(data);
       },
       error => console.log(error)
     );

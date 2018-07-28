@@ -28,7 +28,6 @@ export class LogInComponent implements OnInit {
         var profile = new ProfileDto;
         profile.login = this.login;
         profile.password = this.password;
-        console.log(profile);
         
         this.profileService.authorization(profile).subscribe(
           (data) => {            

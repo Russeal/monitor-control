@@ -53,7 +53,6 @@ export class CenterDetailComponent implements OnInit {
   getDepartments() {
     this.centerService.getDepartmentsOfCenter(this.centerId).subscribe(
       (data) => {
-        // console.log(data);
         this.departments = data;
       },
       error => console.log(error)

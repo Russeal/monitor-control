@@ -20,7 +20,6 @@ export class EngineerListComponent implements OnInit {
   private getProfilesList() {
     this.profileService.getEmployees().subscribe(
       (data) => {
-        console.log(data);
         this.engineers = data;
       },
       error => console.log(error)

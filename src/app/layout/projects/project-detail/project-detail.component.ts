@@ -40,7 +40,6 @@ export class ProjectDetailComponent implements OnInit {
         if (data.state === 1) {
           this.project = data;
           this.getProjectEmployees();
-          console.log(data);
           this.getProjectStateTree();
         }
       },

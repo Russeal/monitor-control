@@ -25,7 +25,6 @@ export class EngineerProjectsComponent implements OnInit {
     this.profileService.getProfileProjects(this.profileId).subscribe(
       (data) => {
         this.projects = data;
-        console.log(data);
       },
       error => console.log(error)
     );

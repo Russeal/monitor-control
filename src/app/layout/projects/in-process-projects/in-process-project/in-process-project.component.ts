@@ -41,7 +41,6 @@ export class InProcessProjectComponent implements OnInit {
           this.project = data;
           this.isPM = data.isPm;
           this.getProjectEmployees();
-          console.log(data);
           this.getProjectStateTree();
         }
       },

@@ -41,7 +41,6 @@ export class InApprovingProjectComponent implements OnInit {
           this.project = data;
           this.isSuperUser = data.isCeo;
           this.getProjectEmployees();
-          console.log(data);
           this.getProjectStateTree();
         }
       },

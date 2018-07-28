@@ -23,7 +23,6 @@ export class PlanningProjectsComponent implements OnInit {
     this.projectUtilService.getPlanningProjects().subscribe(
       (data) => {
         this.projects = data;
-        console.log(data);
       },
       error => console.log(error)
     );

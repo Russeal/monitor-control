@@ -16,21 +16,21 @@
         </div>
         <div class="row">
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="text" id="editEngIn1" name="firstName" class="form-control" [(ngModel)]="profile.firstName">
+            <input mdbInputDirective type="text" id="editEngIn1" name="firstName" class="form-control" [(ngModel)]="profile.firstName">
             <label for="editEngIn1">Ism</label>
           </div>
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="text" id="editEngIn2" name="lastName" class="form-control" [(ngModel)]="profile.lastName">
+            <input mdbInputDirective type="text" id="editEngIn2" name="lastName" class="form-control" [(ngModel)]="profile.lastName">
             <label for="editEngIn2">Familiya</label>
           </div>
         </div>
         <div class="row">
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="text" id="editEngIn3" name="parentName" class="form-control" [(ngModel)]="profile.parentName">
+            <input mdbInputDirective type="text" id="editEngIn3" name="parentName" class="form-control" [(ngModel)]="profile.parentName">
             <label for="editEngIn3">Otasining ismi</label>
           </div>
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="email" id="editEmail" #email name="email"
+            <input mdbInputDirective type="email" id="editEmail" #email name="email"
               (blur)="validateEmail(email.value)" value="{{profile.email}}"
               class="form-control" [(ngModel)]="profile.email">
             <label for="email" id="emailLabel">Email</label>
@@ -38,11 +38,11 @@
         </div>
         <div class="row">
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="date" id="editEngIn4" name="birthday" class="form-control" [ngModel]="birthday | date:'yyyy-MM-dd'">
+            <input mdbInputDirective type="date" id="editEngIn4" name="birthday" class="form-control" [ngModel]="birthday | date:'yyyy-MM-dd'">
             <label for="editEngIn4" id="birthdayLabel">Tug'ilgan kun</label>
           </div>
           <div class="md-form col-9 col-sm-6 animated tada">
-            <input mdbActive type="number" #phone id="editPhone" name="phone"
+            <input mdbInputDirective type="number" #phone id="editPhone" name="phone"
               (blur)="validatePhone(phone.value)" value="{{profile.phoneNumber}}"
               class="form-control" [(ngModel)]="profile.phoneNumber">
             <label for="phone" id="phoneLabel">Telefon raqam</label>
@@ -57,13 +57,13 @@
             </select>
           </div>
           <div class="md-form col-9 col-sm-6" style="margin-top: 18px">
-              <input mdbActive type="text" id="editEngIn6" name="studyPlace" class="form-control" [(ngModel)]="profile.studyPlace">
+              <input mdbInputDirective type="text" id="editEngIn6" name="studyPlace" class="form-control" [(ngModel)]="profile.studyPlace">
               <label for="editEngIn6">Ilmiy maskani</label>
           </div>
         </div>
         <div class="row">
           <div class="md-form col-9 col-sm-6 animated tada row skillAdd">
-            <input mdbActive type="text" id="editEngIn7" name="skills" class="form-control" [(ngModel)]="newSkill">
+            <input mdbInputDirective type="text" id="editEngIn7" name="skills" class="form-control" [(ngModel)]="newSkill">
             <label for="editEngIn7">Mutahassisliklari</label>
             <a (click)="addSkill()"><i class="fa fa-plus-circle"></i></a>
           </div>

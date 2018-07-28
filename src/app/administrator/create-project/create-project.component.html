@@ -5,12 +5,12 @@
     <form class="row">
       <div class="col-12 col-sm-6 animated fadeInLeft">
         <div class="md-form col-10 col-sm-8 centerLash">
-          <input mdbActive type="text" id="projectForm1" class="form-control"
+          <input mdbInputDirective type="text" id="projectForm1" class="form-control"
               [(ngModel)]="name" [ngModelOptions]="{standalone: true}" (blur)="checkProject()">
           <label for="projectForm1">Loyiha nomi</label>
         </div>
         <div class="col-10 col-sm-8 centerLash md-form">
-          <textarea class="md-textarea" id="projectForm2" type="text" mdbActive
+          <textarea class="md-textarea" id="projectForm2" type="text" mdbInputDirective
               [(ngModel)]="description" [ngModelOptions]="{standalone: true}"
               (blur)="checkProject()"></textarea>
           <label for="projectForm2">Qisqacha ma'lumot</label>

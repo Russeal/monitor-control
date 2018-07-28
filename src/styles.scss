@@ -1648,10 +1648,16 @@ nav.navbar ul li a span.numb {
 
 
 
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: #fff !important;
+}
 
 
-
-
+.md-form {
+    span.inputVal {
+        display: none
+    }
+}
 .fade:not(.show) {
     opacity: 1;
 }

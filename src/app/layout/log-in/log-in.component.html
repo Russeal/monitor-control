@@ -5,14 +5,14 @@
   
   <div class="md-form">
     <i class="fa fa-envelope prefix grey-text"></i>
-    <input type="text" class="form-control" name="login" mdbActive [(ngModel)]="login">
-    <label for="defaultForm-email" *ngIf="login.length === 0">Sizning login</label>
+    <input type="text" class="form-control" name="login" mdbInputDirective [(ngModel)]="login">
+    <label for="defaultForm-email">Sizning login</label>
   </div>
   
   <div class="md-form">
     <i class="fa fa-lock prefix grey-text"></i>
-    <input type="password" class="form-control" name="password" mdbActive [(ngModel)]="password">
-    <label for="defaultForm-pass" *ngIf="password.length === 0">Sizning kalit so'zingiz</label>
+    <input type="password" class="form-control" name="password" mdbInputDirective [(ngModel)]="password">
+    <label for="defaultForm-pass">Sizning kalit so'zingiz</label>
   </div>
 
   <div style="color:red; text-align: center" *ngIf="isInvalidLogin">

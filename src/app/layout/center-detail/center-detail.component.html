@@ -1,0 +1,45 @@
+<div class="col-12 row centerMain" *ngIf="center && center.name && center.state === 1">
+  <div class="col-12 col-sm-4 col-lg-5 col-xl-3 centerImgBlock">
+    <img src="{{center.imgLink}}" alt="" class="centerImg">
+  </div>
+  <div class="col-12 col-sm-8 col-lg-7 col-xl-6 profileInfo">
+    <div style="margin: unset; display: block" class="row">
+      <h2 style="display: inline-block">{{ center.name }}</h2>
+      <a routerLink="edit-center" class="saveClass" style="color: green" *ngIf="isSuperUser"><i class="fa fa-pencil-square-o"></i></a>
+      <a (click)="demoBasic.show()" class="saveClass" style="color: red" *ngIf="isSuperUser">
+        <div mdbModal #demoBasic="mdb-modal" class="modal fade" id="deleteWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                    <h5 class="modal-title w-100" id="myModalLabel">Do you want to delete this center?</h5>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="demoBasic.hide()" mdbRippleRadius>No</button>
+                      <button type="button" class="btn btn-primary btn-sm waves-light" (click)="deleteCenter()" mdbRippleRadius>Yes, delete</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <i class="fa fa-trash"></i>
+      </a>
+    </div>
+    <h5 *ngIf="center.profile.state === 1"><i>Manager: </i>{{center.profile.firstName}} {{center.profile.lastName}}</h5>
+    <div class="row">
+      <div class="col-6 col-lg-5 col-xl-4">
+        <h5 class="tushum">{{engineerCount}}</h5>
+        <span>Injenerlar soni</span>
+      </div>
+      <div class="col-6 col-sm-6">
+        <h5 class="tushum">44</h5>
+        <span>Tugallangan proyektlar</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-3 proMinInfDeps" *ngIf="departments">
+    <div class="col-12 col-xl-12 minInfDeps">
+      <h5>Bo'limlar:</h5>
+      <h6 *ngFor="let department of departments" class="animated lightSpeedIn" (mouseenter)="addClass($event)" (mouseleave)="removeClass($event)"><a routerLink="/departments/{{department.id}}">{{department.name}}</a></h6>
+    </div>
+  </div>
+  <!-- <app-best-engineers class="col-12 bestEngineers"></app-best-engineers> -->
+</div>

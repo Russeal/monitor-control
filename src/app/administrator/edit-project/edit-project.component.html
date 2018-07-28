@@ -1,0 +1,76 @@
+<div class="col-12 createProject" *ngIf="project">
+  <div class="row">
+    <h2>{{name}}</h2>
+  </div>
+  <form class="row">
+    <div class="col-12 col-sm-6 animated fadeInLeft">
+      <div class="md-form col-10 col-sm-8 centerLash">
+        <input mdbActive type="text" id="proEditForm1" class="form-control"
+            [(ngModel)]="name" [ngModelOptions]="{standalone: true}" (blur)="checkProject()">
+        <label for="proEditForm1" class="active">Loyiha nomi</label>
+      </div>
+      <div class="col-10 col-sm-8 centerLash md-form">
+        <textarea class="md-textarea" id="proEditForm2" type="text" mdbActive
+            [(ngModel)]="description" [ngModelOptions]="{standalone: true}"
+            (blur)="checkProject()"></textarea>
+        <label for="proEditForm2" class="active">Qisqacha ma'lumot</label>
+      </div>
+      <div class="col-10 col-sm-8 centerLash" *ngIf="managers">
+        <label for="proEditForm3">Loyiha rahbarini tanlang</label>
+        <select class="form-control" id="proEditForm3" aria-placeholder="45" (change)="checkProject()">
+          <option disabled>Menejerlar</option>
+          <option value="{{manager.id}}" *ngFor="let manager of managers" [attr.selected]="manager.firstName === chosenPM.firstName ? true : null">{{ manager.firstName }} {{ manager.lastName }}</option>
+        </select>
+      </div>
+      <div class="col-10 col-sm-8 centerLash" *ngIf="departments">
+        <div class="row">
+          <div class="col-10">
+              <label for="proEditForm4">Bo'limni kiriting</label>
+              <select class="form-control" id="proEditForm4" aria-placeholder="45" (change)="onSelectDep()">
+                <option disabled selected>Bo'limlar</option>
+                <option value="{{department.id}}" *ngFor="let department of departments">{{ department.name }}</option>
+              </select>
+          </div>
+          <div class="col-2 plusButton">
+              <button (click)="addDepartment()"
+                  [attr.disabled]="!isDepReady ? true : null">
+                      <i class="fa fa-plus-circle"></i>
+              </button>
+          </div>
+        </div>
+        <div class="row chosenDeps" *ngIf="chosenDeps.length > 0">
+          <div class="col-12">
+            <p>Tanlangan bo'limlar:</p>
+            <h5 *ngFor="let dep of chosenDeps; let i=index">{{i+1}}. {{dep.name}} <a (click)="removeDepartment(dep)"><i class="fa fa-trash redFont"></i></a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 animated fadeInRight">
+      <div class="col-8 centerLash" id="uploadImg7">
+        <p>Loyihaga tegishli rasmni kiriting:</p>
+        <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" (onReset)="onRemove()" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
+        <button *ngIf="isImgChosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
+        <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+        <button *ngIf="isImgReady" class="btn btn-outline-danger btn-sm" (click)="onRemove()">Remove</button>
+      </div>
+      <div class="col-8 centerLash form-group">
+        <p>Loyihaga tegishli fayllarni kiriting</p>
+        <div>
+          <label for="proEditForm5">
+            <img src="assets/images/upload.png">
+            <p>Drag and Drop or Choose Files</p>
+          </label>
+          <input multiple type="file" id="proEditForm5" (change)="handleFileInput($event.target.files)">
+        </div>
+      </div>
+      <div class="col-8 centerLash">
+        <div id="chosenFiles" *ngIf="chosenFiles.length > 0">
+          <p style="font-size: 16px">Kiritilgan fayllar:</p>
+          <h5 *ngFor="let file of chosenFiles; let i=index">{{i+1}}. {{file.name}} <a (click)="removeFile(file, i)"><i class="fa fa-trash redFont"></i></a></h5>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-info saveClass centerLash" (click)="saveProject()" [attr.disabled]="!isProjectReady ? true : null">Saqlash</button>
+  </form>
+</div>

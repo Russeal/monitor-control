@@ -1,0 +1,80 @@
+<div class="col-12 editProfile" *ngIf="profile">
+  <div class="row">
+    <h2>{{profile.firstName}} {{profile.lastName}}</h2>
+  </div>
+  <form class="row">
+      <div class="col-12 col-sm-9 col-xl-8 editEngineerForm">
+        <div class="row" style="padding-bottom: 2%">
+          <div class="animated fadeInLeft col-6" id="uploadImg5">
+            <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" [config]="{ crop: [ { ratio: 1 } ] }"></ngx-img>
+            <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+          </div>
+          <div class="col-6" style="padding-top: 2%">
+            <button *ngIf="isImgChosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
+            <button *ngIf="isImgReady" class="btn btn-outline-danger btn-sm" (click)="removeImg()">Remove</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="text" id="editEngIn1" name="firstName" class="form-control" [(ngModel)]="profile.firstName">
+            <label for="editEngIn1">Ism</label>
+          </div>
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="text" id="editEngIn2" name="lastName" class="form-control" [(ngModel)]="profile.lastName">
+            <label for="editEngIn2">Familiya</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="text" id="editEngIn3" name="parentName" class="form-control" [(ngModel)]="profile.parentName">
+            <label for="editEngIn3">Otasining ismi</label>
+          </div>
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="email" id="editEmail" #email name="email"
+              (blur)="validateEmail(email.value)" value="{{profile.email}}"
+              class="form-control" [(ngModel)]="profile.email">
+            <label for="email" id="emailLabel">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="date" id="editEngIn4" name="birthday" class="form-control" [ngModel]="birthday | date:'yyyy-MM-dd'">
+            <label for="editEngIn4" id="birthdayLabel">Tug'ilgan kun</label>
+          </div>
+          <div class="md-form col-9 col-sm-6 animated tada">
+            <input mdbActive type="number" #phone id="editPhone" name="phone"
+              (blur)="validatePhone(phone.value)" value="{{profile.phoneNumber}}"
+              class="form-control" [(ngModel)]="profile.phoneNumber">
+            <label for="phone" id="phoneLabel">Telefon raqam</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-9 col-sm-6">
+            <label for="editEngIn5">Ilmiy darajasi</label>
+            <select class="form-control" id="addEngIn5" aria-placeholder="45">
+              <option disabled selected>Ilmiy darajalar: </option>
+              <option value="{{degree}}" *ngFor="let degree of degrees" [attr.selected]="degree === profile.studyDegree ? true : null">{{ degree }}</option>
+            </select>
+          </div>
+          <div class="md-form col-9 col-sm-6" style="margin-top: 18px">
+              <input mdbActive type="text" id="editEngIn6" name="studyPlace" class="form-control" [(ngModel)]="profile.studyPlace">
+              <label for="editEngIn6">Ilmiy maskani</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form col-9 col-sm-6 animated tada row skillAdd">
+            <input mdbActive type="text" id="editEngIn7" name="skills" class="form-control" [(ngModel)]="newSkill">
+            <label for="editEngIn7">Mutahassisliklari</label>
+            <a (click)="addSkill()"><i class="fa fa-plus-circle"></i></a>
+          </div>
+          <div class="md-form col-9 col-sm-6 animated tada row skillList">
+            <div class="col-6 row" *ngFor="let skill of skills">
+              <h5>{{skill}}</h5>
+              <a (click)="removeSkill(skill)"><i class="fa fa-trash redFont"></i></a>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info saveDep" (click)="saveProfile()">Saqlash</button>
+      </div>
+  </form>
+</div>

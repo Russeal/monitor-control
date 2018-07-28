@@ -1,0 +1,30 @@
+<div class="positionCom">
+  <div class="row">
+    <h2>Ish o'rinlari</h2>
+  </div>
+  <div class="inputField row">
+    <input type="text" placeholder="Ish o'rni" [(ngModel)]="newPos" *ngIf="!isEditing">
+    <button (click)="saveNewPos()" [attr.disabled]="newPos.length < 3 ? true : null" *ngIf="!isEditing">
+      <i class="fa fa-plus-circle"></i>
+    </button>
+    <input type="text" placeholder="Ish o'rni" [(ngModel)]="editingPos.name" *ngIf="isEditing && editingPos">
+    <button (click)="saveEdited()" [attr.disabled]="editingPos.name.length < 3 ? true : null" *ngIf="isEditing && editingPos">
+      <i class="fa fa-pencil-square-o"></i>
+    </button>
+    <button (click)="cancelEditing()" *ngIf="isEditing">
+      <i class="fa fa-ban"></i>
+    </button>
+  </div>
+  <div class="positionsList">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let position of positions, let i=index">
+          <th scope="row">{{i + 1}}</th>
+          <td style="font-size: 17px">{{position.name}}</td>
+          <td><a style="color: #4ABDE8" (click)="editPosition(position.id)"><i class="fa fa-pencil-square-o"></i></a></td>
+          <td><a style="color: #FF4F5E" (click)="deletePos(position.id)"><i class="fa fa-trash"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

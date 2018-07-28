@@ -1,0 +1,37 @@
+<div class="machinesCRUD">
+  <div class="row">
+    <h2>Dastgohlar</h2>
+  </div>
+  <div class="inputField">
+    <form class="row createForm" *ngIf="!isEditing">
+      <input type="text" placeholder="Dastgoh nomi" [(ngModel)]="newMachine" [ngModelOptions]="{standalone: true}">
+      <input type="number" placeholder="Narxi" [(ngModel)]="price" step="1000" [ngModelOptions]="{standalone: true}">
+      <button type="submit" (click)="saveNewMachine()" [attr.disabled]="newMachine.length < 3 ? true : null">
+        <i class="fa fa-plus-circle"></i>
+      </button>
+    </form>
+    <form class="row editForm" *ngIf="isEditing && editingMachine">
+      <input type="text" placeholder="Dastgoh nomi" [(ngModel)]="editingMachine.name" [ngModelOptions]="{standalone: true}">
+      <input type="number" placeholder="Narxi" [(ngModel)]="editingMachine.ph" step="1000" [ngModelOptions]="{standalone: true}">
+      <button type="submit" (click)="saveEdited()" [attr.disabled]="editingMachine.name.length < 3 ? true : null">
+        <i class="fa fa-pencil-square-o"></i>
+      </button>
+      <button (click)="cancelEditing()">
+        <i class="fa fa-ban"></i>
+      </button>
+    </form>
+  </div>
+  <div class="machinesList">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let machine of machines, let i=index">
+          <td>{{i + 1 }}.</td>
+          <td>{{machine.name}}</td>
+          <td>{{machine.ph}}</td>
+          <td><a style="color: #4ABDE8" (click)="editMachine(machine.id)"><i class="fa fa-pencil-square-o"></i></a></td>
+          <td><a (click)="deleteMachine(machine.id)"><i class="fa fa-trash redFont"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

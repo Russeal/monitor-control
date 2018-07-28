@@ -1,0 +1,20 @@
+<div class="row">
+  <h2 style="margin-top: unset">Eng yaxshi enjinerlar</h2>
+</div>
+<div class="row">
+  <div class="bestEngineersRow">
+    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 bestEngineer animated fadeInRight" *ngFor="let engineer of bestEngineers">
+      <app-one-engineer [engineer]='engineer'></app-one-engineer>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h2 style="margin-top: 6%">Eng yaxshi proyektlar</h2>
+</div>
+<div class="row">
+  <div class="bestProjectsRow">
+    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let projectItem of bestProjects">
+      <app-project-item [project] = 'projectItem'></app-project-item>
+    </div>
+  </div>
+</div>

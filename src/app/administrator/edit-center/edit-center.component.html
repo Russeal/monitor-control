@@ -1,0 +1,25 @@
+<div class="col-12 editCenter" *ngIf="center">
+  <div class="row">
+    <h2>{{center.name}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInLeft" id="uploadImg2">
+        <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
+        <button *ngIf="isImgChoosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
+        <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+        <button *ngIf="isImgReady" class="btn btn-outline-danger btn-sm" (click)="removeImg()">Remove</button>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInRight">
+      <div class="md-form">
+        <input mdbActive type="text" id="formCntr2" class="form-control" [(ngModel)]="center.name" [change]="onChangeName()">
+        <label for="formCntr2">Markaz nomi</label>
+      </div>
+      <label for="selManager">Menejerni tanlang</label>
+      <select class="form-control" id="selManager" aria-placeholder="45">
+        <option disabled selected>Hodimlar</option>
+        <option value="{{manager.id}}" *ngFor="let manager of managers" [attr.selected]="manager.id === managerBekId ? true : null">{{ manager.firstName }} {{ manager.lastName }}</option>
+      </select>
+      <button class="btn btn-info saveClass" (click)="saveCenter()" [attr.disabled]="!isCenterReady ? true : null">Saqlash</button>
+    </div>
+  </div>
+</div>

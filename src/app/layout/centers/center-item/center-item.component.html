@@ -1,0 +1,5 @@
+<div class="centerItem" *ngIf="center">
+  <img src="{{ center.imgLink }}">
+  <a routerLink='{{ center.id }}'><h5>{{ center.name }}</h5></a>
+  <a class="aboutAuthor" *ngIf="center.profile.state === 1"><h5><i>Manager:</i> {{ center.profile.firstName }} {{ center.profile.lastName }}</h5></a>
+</div>

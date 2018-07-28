@@ -1,0 +1,256 @@
+<div *ngIf="project">
+  <div class="col-12 row editProject">
+    <div class="col-12 col-sm-4 col-lg-5 col-xl-3 projectImgBlock">
+      <img src="{{project.imgLink}}" class="projectImg">
+      <div *ngIf="isSuperUser">
+        <button class="btn btn-warning btn-md" (click)="projectStartModal.show()">Start</button>
+        <div mdbModal #projectStartModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                    <h5 class="modal-title w-100" id="myModalLabel">Do you want to start this Project?</h5>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectStartModal.hide()" mdbRippleRadius>No</button>
+                      <button type="button" class="btn btn-primary btn-sm waves-light" (click)="startProject()" mdbRippleRadius>Yes, start</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isPm">
+          <button class="btn btn-warning btn-md" (click)="projectReady()">Tayyor</button>
+      </div>
+    </div>
+    <div class="col-12 col-sm-8 col-lg-7 col-xl-6 profileInfo">
+      <div style="margin: unset; display: block" class="row">
+        <h2 style="display: inline-block">{{ project.name }}</h2>
+        <a routerLink="edit-project" class="saveClass" style="color: green" *ngIf="isSuperUser"><i class="fa fa-pencil-square-o"></i></a>
+        <a (click)="projectDeleteModal.show()" class="saveClass" style="color: red" *ngIf="isSuperUser">
+          <div mdbModal #projectDeleteModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                      <h5 class="modal-title w-100" id="myModalLabel">Do you want to delete this Project?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectDeleteModal.hide()" mdbRippleRadius>No</button>
+                        <button type="button" class="btn btn-primary btn-sm waves-light" (click)="deleteProject()" mdbRippleRadius>Yes, delete</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+      <h5 *ngIf="project.profile.id"><i>Manager: </i>{{project.profile.firstName}} {{project.profile.lastName}}</h5>
+      <div class="row">
+        <div class="col-12">
+          <p class="tushum">{{project.description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="tushum" *ngFor="let file of files"><a href="{{file.fileLink}}" download="{{file.name}}">{{file.name}}</a></p>
+        </div>
+        <div class="col-6" *ngIf="isSuperUser || isPm">
+          <p class="tushum chiqim" *ngIf="totalSum !== 0">Jami chiqim: {{totalSum}}</p>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-xl-3 proMinInfDeps">
+      <div class="col-12 col-xl-12 minInfDeps">
+        <h5>Bo'limlar:</h5>
+        <h6 *ngFor="let department of project.projectDeps" class="animated lightSpeedIn" (mouseenter)="addClass($event)" (mouseleave)="removeClass($event)"><a routerLink="/departments/{{department.department.id}}">{{department.department.name}}</a></h6>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="col-12 outlay" *ngIf="isPm">
+    <div class="row">
+      <h2>Deadline</h2>
+    </div>
+    <form class="col-12 col-md-6 col-lg-3 row mtrlOutlay">
+      <div class="md-form col-10">
+        <input mdbActive type="number" id="deadline" [(ngModel)]="deadline" min="0"
+              [ngModelOptions]="{standalone: true}"><span>kun</span>
+        <label for="deadline">Muhlat</label>
+      </div>
+      <div class="col-2 plusButton">
+        <button type="submit" (click)="saveDeadline()" [attr.disabled]="deadline > 0 ? null : true">
+          <i class="fa fa-check-circle"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <hr *ngIf="isPm">
+  <div class="col-12 outlay" *ngIf="isSuperUser || isPm">
+    <div class="row">
+      <h2>Loyiha hodimlari</h2>
+    </div>
+    <form class="col-12 col-md-9 row empOutlay">
+      <div class="col-3">
+        <select class="form-control" id="chooseDepToPro" aria-placeholder="45" (change)="onDepChange()">
+          <option selected>Bo'limlar</option>
+          <option value="{{department.department.id}}" *ngFor="let department of project.projectDeps">{{ department.department.name }}</option>
+        </select>
+      </div>
+      <div class="col-5">
+        <select class="form-control" id="addEmpToPro" aria-placeholder="45" (change)="onEmpChange()">
+          <option selected>Hodimlar</option>
+          <option value="{{employee.id}}" *ngFor="let employee of employees">{{ employee.firstName }} {{ employee.lastName }}</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <input type="number" [(ngModel)]="salary" step="1000" min="0" [ngModelOptions]="{standalone: true}"><span>so'm</span>
+      </div>
+      <div class="col-1 plusButton">
+        <button type="submit" (click)="saveNewEmp()" [attr.disabled]="!isEmpChosen ? true : null">
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </div>
+    </form>
+    <div class="col-8 projectEmps" *ngIf="project.projectEmps.length > 0 ? true : false">
+      <table class="table">
+        <tr>
+          <th>№</th>
+          <th>Ismi</th>
+          <th>Maosh</th>
+          <th>O'chirish</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let emp of project.projectEmps, let i=index">
+            <td>{{i + 1 }}.</td>
+            <td>{{emp.profile.firstName}} {{emp.profile.lastName}}</td>
+            <td>{{emp.salary}}</td>
+            <td><a (click)="deleteEmployee(emp.id)"><i class="fa fa-trash redFont"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row col-12" style="display: inline-block" *ngIf="totalSalary">
+      <p class="tushum chiqim">Jami: {{totalSalary}}</p>
+    </div>
+  </div>
+  <hr *ngIf="isSuperUser || isPm">
+  <div class="col-12 outlay" *ngIf="isSuperUser || isPm">
+    <div class="row">
+      <h2>Raw Materials</h2>
+    </div>
+    <form class="col-12 row mtrlOutlay">
+      <div class="md-form col-3">
+        <input mdbActive type="text" id="MtrlName" class="form-control" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
+        <label for="MtrlName">Material nomi</label>
+      </div>
+      <div class="md-form col-1">
+        <input mdbActive type="number" id="MtrlCount" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
+        <label for="MtrlCount">Miqdori</label>
+      </div>
+      <div class="unitForm col-1">
+        <select class="form-control" id="chooseUnitToMtrl" aria-placeholder="45" (change)="onChangeUnit()">
+          <option value="{{unit.id}}" *ngFor="let unit of units">{{ unit.name }}</option>
+        </select>
+      </div>
+      <div class="md-form col-2" *ngIf="chosenUnit">
+        <input mdbActive type="number" id="MtrlPrice" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()"><span>so'm</span>
+        <label for="MtrlPrice">Narxi / {{chosenUnit.name}}</label>
+      </div>
+      <div class="md-form col-2">
+        <input mdbActive type="number" id="MtrlWholePrice" [(ngModel)]="mtrlWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <label for="MtrlWholePrice">Jami Narxi</label>
+      </div>
+      <div class="md-form col-2">
+        <input mdbActive type="text" id="MtrlLink" class="form-control" [ngModelOptions]="{standalone: true}">
+        <label for="MtrlLink">Link</label>
+      </div>
+      <div class="col-1 plusButton">
+        <button type="submit" (click)="saveNewMtrl()" [attr.disabled]="!isMtrlReady ? true : null">
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </div>
+    </form>
+    <div class="col-10 projectEmps" *ngIf="project.rawMaterials.length > 0 ? true : false">
+      <table class="table">
+        <tr>
+          <th>№</th>
+          <th>Nomi</th>
+          <th>Miqdori</th>
+          <th>Narxi</th>
+          <th>Jami narxi</th>
+          <th>Linki</th>
+          <th>O'chirish</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let mtrl of project.rawMaterials, let i=index">
+            <td>{{i + 1 }}.</td>
+            <td>{{mtrl.name}}</td>
+            <td>{{mtrl.count}} {{mtrl.unit.name}}</td>
+            <td>{{mtrl.price}} so'mdan</td>
+            <td>{{mtrl.price * mtrl.count}}</td>
+            <td>{{mtrl.link}}</td>
+            <td><a (click)="deleteMaterial(mtrl.id)"><i class="fa fa-trash redFont"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row col-12" style="display: inline-block" *ngIf="totalRawMat">
+      <p class="tushum chiqim">Jami: {{totalRawMat}}</p>
+    </div>
+  </div>
+  <hr *ngIf="isSuperUser || isPm">
+  <div class="col-12 outlay" *ngIf="isSuperUser || isPm">
+    <div class="row">
+      <h2>Jihozlar</h2>
+    </div>
+    <form class="col-12 col-md-9 row equipOutlay">
+      <div class="col-5">
+        <select class="form-control" id="chooseEquipToPro" aria-placeholder="45" (change)="onEquipChange()">
+          <option selected>Jihozlar</option>
+          <option value="{{equipment.id}}" *ngFor="let equipment of equipments">{{ equipment.name }}</option>
+        </select>
+      </div>
+      <div class="md-form col-2">
+        <input mdbActive type="number" id="EquipmentPrice" [(ngModel)]="equipPrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <label for="EquipmentPrice">Narxi / soat</label>
+      </div>
+      <div class="md-form col-2">
+        <input mdbActive type="number" id="equipHour" min="0" [ngModelOptions]="{standalone: true}" (blur)="onEquipChange()"><span>soat</span>
+        <label for="equipHour">Ish vaqti</label>
+      </div>
+      <div class="md-form col-2">
+        <input mdbActive type="number" [(ngModel)]="equipWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <label for="MtrlWholePrice">Jami Narxi</label>
+      </div>
+      <div class="col-1 plusButton">
+        <button type="submit" (click)="saveNewEquip()" [attr.disabled]="!isEquipReady ? true : null">
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </div>
+    </form>
+    <div class="col-10 projectEmps" *ngIf="project.projectEquips.length > 0 ? true : false">
+      <table class="table">
+        <tr>
+          <th>№</th>
+          <th>Nomi</th>
+          <th>Narxi / soat</th>
+          <th>Ishlash vaqti</th>
+          <th>Jami narxi</th>
+          <th>O'chirish</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let equip of project.projectEquips, let i=index">
+            <td>{{i + 1 }}.</td>
+            <td>{{equip.equipment.name}}</td>
+            <td>{{equip.equipment.ph}}</td>
+            <td>{{equip.workHour}}</td>
+            <td>{{equip.equipment.ph * equip.workHour}}</td>
+            <td><a (click)="deleteEquipment(equip.id)"><i class="fa fa-trash redFont"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row col-12" style="display: inline-block" *ngIf="totalMachine">
+      <p class="tushum chiqim">Jami: {{totalMachine}}</p>
+    </div>
+  </div>
+</div>

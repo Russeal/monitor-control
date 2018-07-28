@@ -1,0 +1,24 @@
+<div class="col-12 addDep">
+  <div class="row">
+    <h2>Yangi Bo'lim</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInLeft" id="uploadImg3">
+        <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
+        <button *ngIf="isImgChoosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
+        <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInRight">
+       <div class="md-form">
+        <input mdbActive type="text" id="formDepName" class="form-control" [change]="onChangeName()">
+        <label for="formDepName">Bo'lim nomi</label>
+      </div>
+      <label for="selCenter">Markazni tanlang</label>
+      <select class="form-control" id="selCenter" aria-placeholder="45">
+        <option disabled selected>Markazlar</option>
+        <option value="{{center.id}}" *ngFor="let center of centers">{{ center.name }}</option>
+      </select>
+      <button type="submit" class="btn btn-info saveDep" (click)="saveDep()" [attr.disabled]="!isDepReady ? true : null">Saqlash</button>
+    </div>
+  </div>
+</div>

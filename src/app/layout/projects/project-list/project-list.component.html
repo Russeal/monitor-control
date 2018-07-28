@@ -1,0 +1,10 @@
+<div class="container projectList">
+  <div class="row">
+    <h2>Tugatilgan Loyihalar</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-4" *ngFor = "let projectItem of projects">
+      <app-project-item [project] = 'projectItem'></app-project-item>
+    </div>
+  </div>
+</div>

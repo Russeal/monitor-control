@@ -1,0 +1,35 @@
+<div class="col-12 row projectDetail" *ngIf="project">
+  <div class="row" style="margin: 0 auto">
+    <h4 style="padding: 15px; margin: unset"><b>Loyihaning holati </b></h4>
+    <button class="btn btn-info" id="state2" disabled>Planning</button>
+    <button class="btn btn-info" id="state3" disabled>In Process</button>
+    <button class="btn btn-info" id="state4" disabled>Test</button>
+    <button class="btn btn-info" id="state5" disabled>Finished</button>
+  </div>
+  <h2 class="col-12">{{project.name}}</h2>
+  <div class="col-12 col-sm-3 col-md-4">
+    <h4><i>Loyiha rahbari:</i> {{project.profile.firstName}} {{project.profile.lastName}}</h4>
+    <br>
+    <p><i>Tavsif:</i> {{project.description}}</p>
+    <br>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4 projectImgBlock">
+    <img *ngIf="project.imgLink" src="{{project.imgLink}}" class="projectImg">
+  </div>
+  <div class="col-12 col-sm-3 col-md-4 proMinInfDeps">
+    <div class="col-12 minInfDeps">
+      <h5>Bo'limlar:</h5>
+      <h6 *ngFor="let department of project.projectDeps" class="animated lightSpeedIn" (mouseenter)="addClass($event)" (mouseleave)="removeClass($event)"><a routerLink="/departments/{{department.department.id}}">{{department.department.name}}</a></h6>
+    </div>
+  </div>
+  <div class="row container" style="margin: unset">
+    <h2>Loyiha qatnashchilari</h2>
+  </div>
+  <div class="row" style="margin: 15px" *ngIf="emps">
+    <div class="bestProjectsRow">
+      <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let emp of emps">
+        <app-one-engineer [engineer] = 'emp'></app-one-engineer>
+      </div>
+    </div>
+  </div>
+</div>

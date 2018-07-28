@@ -1,0 +1,13 @@
+<div class="depItem card" *ngIf="department">
+    <img src="{{department.imgLink}}">
+
+    <div class="depNameInfo">
+        <h4><a routerLink="{{department.id}}">{{department.name}}</a></h4>
+        <h6 *ngIf="department.profile"><i>Manager: </i> {{department.profile.firstName}} {{department.profile.lastName}}</h6>
+    </div>
+    <hr>
+    <div class="row depInfo">
+        <div class="col-6"><i class="fa fa-users"></i> {{engineersCount}}</div>
+        <div *ngIf="department.projectsNum" class="col-6"><i class="fa fa-folder-open-o"></i> {{department.projectsNum}}</div>
+    </div>
+</div>

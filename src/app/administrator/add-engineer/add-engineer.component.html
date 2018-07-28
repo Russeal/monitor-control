@@ -1,0 +1,55 @@
+<div class="col-12 addEngineer">
+  <div class="row">
+    <h2>Yangi hodim</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-9 col-xl-8 createEngineerForm">
+      <div class="row">
+        <div class="md-form col-9 col-sm-6 animated tada">
+          <input mdbActive type="text" id="addEngIn1" class="form-control" [(ngModel)]="name">
+          <label for="addEngIn1">Ism</label>
+        </div>
+        <div class="md-form col-9 col-sm-6 animated tada">
+          <input mdbActive type="text" id="addEngIn2" class="form-control" [(ngModel)]="surname" [attr.disabled]="name.length < 3 ? true : null">
+          <label for="addEngIn2">Familiya</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="md-form col-9 col-sm-6 animated tada">
+          <input mdbActive type="text" id="addEngIn6" class="form-control" [(ngModel)]="login" [attr.disabled]="surname.length < 3 ? true : null">
+          <label for="addEngIn6">Login</label>
+        </div>
+        <div class="md-form col-9 col-sm-6 animated tada">
+          <input mdbActive type="text" id="addEngIn7" class="form-control" [(ngModel)]="password" [attr.disabled]="login.length < 3 ? true : null">
+          <label for="addEngIn7">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9 col-sm-6">
+          <label for="addEngIn3" class="animated tada">Markazni tanlang</label>
+          <select class="form-control" id="addEngIn3" aria-placeholder="45" [ngModelChange]="onChangeCenter()" [attr.disabled]="login.length < 3 ? true : null">
+            <option disabled selected>Markazlar</option>
+            <option value="{{center.id}}" *ngFor="let center of centers">{{ center.name }}</option>
+          </select>
+        </div>
+        <div class="col-9 col-sm-6">
+          <label for="addEngIn4" class="animated tada">Bo'limni tanlang</label>
+          <select class="form-control" id="addEngIn4" aria-placeholder="45" [attr.disabled]="!isCenterChosen ? true : null">
+            <option disabled selected>Bo'limlar</option>
+            <option value="{{department.id}}" *ngFor="let department of departments">{{ department.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9 col-sm-6">
+          <label for="addEngIn5" class="animated tada">Lavozimni tanlang</label>
+          <select class="form-control" id="addEngIn5" aria-placeholder="45" [attr.disabled]="!isDepChosen ? true : null">
+            <option disabled selected>Lavozimlar</option>
+            <option value="{{position.id}}" *ngFor="let position of positions">{{ position.name }}</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info saveDep" (click)="saveProfile()" [attr.disabled]="!isEngReady ? true : null">Saqlash</button>
+    </div>
+  </div>
+</div>

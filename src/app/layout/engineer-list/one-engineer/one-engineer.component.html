@@ -1,0 +1,34 @@
+<div class="oneEngineer" *ngIf="engineer">
+  <div class="row">
+    <span><i style="padding: 5px 10px">{{engineer.position.name}}</i> | {{engineer.department.name}}</span>
+  </div>
+  <div class="row" style="min-height: 150px;">
+    <div class="col-7">
+      <a><h5>{{ engineer.firstName }} {{ engineer.lastName }}</h5></a>
+      <p *ngIf="skills.length > 0">Mutahassisliklari: <span *ngFor="let skill of skills">{{ skill }} <span class="fa fa-check"></span></span></p>
+      <p *ngIf="engineer.email"><i class="fa fa-envelope-o"></i> {{engineer.email}}</p>
+      <p *ngIf="engineer.phoneNumber"><i class="fa fa-phone"></i> {{engineer.phoneNumber}}</p>
+    </div>
+    <div class="col-5" style="padding-top: 10px">
+      <img *ngIf="engineer.imageLink" [src]="engineer.imageLink" style="width: 100%; border-radius: 50%;">
+      <img *ngIf="!engineer.imageLink" src="assets/images/user.png" style="width: 100%; border-radius: 50%;">
+    </div>
+  </div>
+  <div class="row profileFoot">
+    <div class="col-6 profileJSS">
+      <!-- <span>{{ engineer.jss }}%</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar"
+            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [style.width]= "engineer.jss + '%'">
+        </div>
+      </div>
+      <span>Ish unumdorligi</span> -->
+    </div>
+    <div class="col-6">
+      <button class="btn btn-info"
+        routerLink="/employees/{{engineer.id}}"
+        [queryParams]="{name: engineer.firstName}"
+      >To'liqroq</button>
+    </div>
+  </div>
+</div>

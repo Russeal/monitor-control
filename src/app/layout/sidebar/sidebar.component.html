@@ -1,0 +1,209 @@
+<!-- Sidebar -->
+<nav id="sidebar" class="col-md-3 col-xl-2 sidebar">
+  <div class="opasinicity">
+      <!-- Logo -->
+      <div class="logo">
+          <img src="assets/images/white.png">
+      </div>
+      <!-- Welcome -->
+      <div class="welcomeMsg row">
+          <div class="col-4">
+              <img src="../../assets/images/user.png" *ngIf="!imgSrc">
+              <img src="{{imgSrc}}" *ngIf="imgSrc">
+          </div>
+          <div class="col-8">
+              <span>Xush kelibsiz,</span>
+              <h4>{{ name }}</h4>
+          </div>
+      </div>
+
+      <!-- Engineerni Menyusi -->
+      <ul class="collapsible collapsible-accordion">
+            <li id="DboshMenu0">
+                <a (click)="changeSubMenu('D', 0)" class="collapsible-header waves-effect">
+                    <i class="fa fa-university"></i>Markazlar<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu0" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/markazlar')" class="collapsible-header waves-effect">Markazlar</a>
+                        </li>
+                        <li *ngIf="isSuperAdmin">
+                            <a (click)="sidebarClose('/markazlar/yangi-markaz')" class="collapsible-header waves-effect">Markaz qo'shish</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li id="DboshMenu1">
+                <a (click)="changeSubMenu('D', 1)" class="collapsible-header waves-effect">
+                    <i class="fa fa-sitemap"></i>Bo'limlar<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu1" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/departments')" class="collapsible-header waves-effect">Bo'limlar</a>
+                        </li>
+                        <li *ngIf="isSuperAdmin">
+                            <a (click)="sidebarClose('/departments/add-department')" class="collapsible-header waves-effect">Bo'lim qo'shish</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li id="DboshMenu5" *ngIf="isSuperAdmin">
+                <a (click)="changeSubMenu('D', 5)" class="collapsible-header waves-effect">
+                    <i class="fa fa-user-md"></i>Menejment<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu5" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/positions')" class="collapsible-header waves-effect">Ish o'rinlari</a>
+                        </li>
+                        <li>
+                            <a (click)="sidebarClose('/machines')" class="collapsible-header waves-effect">Dastgohlar</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li id="DboshMenu2">
+                <a (click)="changeSubMenu('D', 2)" class="collapsible-header waves-effect">
+                    <i class="fa fa-users"></i>Hodimlar<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu2" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/employees')" class="collapsible-header waves-effect">Hodimlar</a>
+                        </li>
+                        <li *ngIf="isSuperAdmin">
+                            <a (click)="sidebarClose('/employees/add-employee')" class="collapsible-header waves-effect">Hodim qo'shish</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li id="DboshMenu3">
+                <a (click)="changeSubMenu('D', 3)" class="collapsible-header waves-effect">
+                    <i class="fa fa-folder-open-o"></i>Loyihalar<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu3" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/projects')" class="collapsible-header waves-effect">Tugatilgan loyihalar</a>
+                        </li>
+                        <li>
+                            <a (click)="sidebarClose('/projects/in-approval-projects')" class="collapsible-header waves-effect">Topshirilgan loyihalar</a>
+                        </li>
+                        <li>
+                            <a (click)="sidebarClose('/projects/in-process-projects')" class="collapsible-header waves-effect">Amaldagi loyihalar</a>
+                        </li>
+                        <li>
+                            <a (click)="sidebarClose('/projects/new-planned-projects')" class="collapsible-header waves-effect">Rejadagi loyihalar</a>
+                        </li>
+                        <li *ngIf="isSuperAdmin">
+                            <a (click)="sidebarClose('/projects/create-project')" class="collapsible-header waves-effect">Loyiha qo'shish</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li id="DboshMenu4">
+                <a (click)="changeSubMenu('D', 4)" class="collapsible-header waves-effect">
+                    <i class="fa fa-user-o"></i>Profil<i class="fa fa-angle-down rotate-icon"></i>
+                </a>
+                <div id="DsubMenu4" class="collapsible-body" style="height: 0px">
+                    <ul class="sub-menu">
+                        <li>
+                            <a (click)="sidebarClose('/profile')" class="collapsible-header waves-effect">Shaxsiy profil</a>
+                        </li>
+                        <li>
+                            <a (click)="sidebarClose('/profile/edit-profile')" class="collapsible-header waves-effect">Taxrirlash</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+  </div>
+</nav>
+<!-- Sidebar -->
+
+<!--Main Navigation-->
+<nav class="navbar fixed-top scrolling-navbar col-xs-12 col-md-9 col-xl-10">
+  <!-- Menu chiqargich -->
+  <div class="float-left">
+      <a class="button-collapse" (click)="sidebarToggle()"><i class="fa fa-bars"></i></a>
+  </div>
+  <!-- Profile -->
+  <div class="profileInfo">
+      <ul>
+          <li dropdown>
+              <a dropdownToggle class="info-number">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="numb" *ngIf="ntfcCount > 0">{{ntfcCount}}</span>
+              </a>
+              <div class="dropdown-menu ntfcMenu">
+                <h6 class="dropdown-header">Xabarlar</h6>
+                <span *ngFor="let ntfc of ntfcList, let i=index">
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="openNtfcModal(ntfc.id)" style="white-space: normal;">{{i+1}}. {{ntfc.content}}</a>
+                </span>
+              </div>
+          </li>
+          <li dropdown>
+              <a dropdownToggle class="user-profile">
+                  <img src="assets/images/user.png" *ngIf="!imgSrc">
+                  <img src="{{imgSrc}}" *ngIf="imgSrc">
+                  <span>{{name}}</span>
+                  <span class="fa fa-angle-down rotateIcon"></span>
+              </a>
+                <div class="dropdown-menu">
+                    <h6 class="dropdown-header">{{ name }}</h6>
+                    <div class="divider dropdown-divider"></div>
+                    <!-- <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Settings</a> -->
+                    <a class="dropdown-item" (click)="openLogOut()"><i class="fa fa-sign-out"></i> Chiqish</a>
+                </div>
+          </li>
+      </ul>
+  </div>
+</nav>
+<!--Main Navigation-->
+
+<div class="modal fade" id="logOut">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Saytdan chiqmoqchimisiz?</h4>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)='logOut()'>Ha</button>
+          <button type="button" class="btn btn-warning" (click)="cancelLogOut('logOut')">Yoq</button>
+        </div>  
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ntfcRead" *ngIf="notification">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Hurmatli {{notification.receiver.firstName}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-3 text-center">
+                    <img src="{{imgSrc}}" class="img-fluid z-depth-1-half rounded-circle" *ngIf="imgSrc">
+                    <img src="../../assets/images/user.png" class="img-fluid z-depth-1-half rounded-circle" *ngIf="!imgSrc">
+                    <div style="height: 10px"></div>
+                    <p class="title mb-0">{{notification.sender.firstName}}</p>
+                </div>
+                <div class="col-9">
+                    <p>{{notification.content}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-warning" (click)='finishReadingNtfc()'>O'qildi</button>
+        </div>  
+      </div>
+    </div>
+</div>

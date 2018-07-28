@@ -1,0 +1,12 @@
+<div class="card projectItem view hm-zoom">
+  <a class="view hm-white-slight waves-light projImg">
+    <img src="{{ project.imgLink }}" class="img-fluid">
+  </a>
+  <header class="depar">
+    <h4>{{ project.name }}</h4>
+  </header>
+  <div class="entry-meta">
+    <a routerLink="{{project.id}}" class="entry-read-more-pointer"><span class="fa fa-angle-right"></span></a>
+    <p class="entry-author-wrap"><i>PM:</i> {{ project.profile.firstName }} {{ project.profile.lastName }}</p>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="col-12 row depMain" *ngIf="department">
+  <div class="col-12 col-sm-4 col-lg-5 col-xl-3 depImgBlock">
+    <img src="{{department.imgLink}}" alt="" class="depImg">
+  </div>
+  <div class="col-12 col-sm-8 col-lg-7 col-xl-6 profileInfo">
+    <div style="margin: unset; display: block" class="row">
+      <h2 style="display: inline-block">{{ department.name }}</h2>
+      <a routerLink="edit-department" class="saveClass" style="color: green" *ngIf="isSuperUser"><i class="fa fa-pencil-square-o"></i></a>
+      <a (click)="deleteDepMod.show()" class="saveClass" style="color: red" *ngIf="isSuperUser">
+        <i class="fa fa-trash"></i>
+        <div mdbModal #deleteDepMod="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                      <h5 class="modal-title w-100" id="myModalLabel">Do you want to delete this department?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="deleteDepMod.hide()" mdbRippleRadius>No</button>
+                        <button type="button" class="btn btn-primary btn-sm waves-light" (click)="deleteDepartment()" mdbRippleRadius>Yes, delete</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </a>
+    </div>
+    <h4 *ngIf="department.profile"><i>Manager: </i>{{department.profile.firstName}} {{department.profile.lastName}}</h4>
+    <h5><i>Markaz: </i>{{department.center.name}}</h5>
+    <div class="row">
+      <div class="col-6 col-lg-5 col-xl-4">
+        <h5 class="tushum" *ngIf="engineers">{{engineers.length}}</h5>
+        <span>Injenerlar soni</span>
+      </div>
+      <div class="col-6 col-sm-6">
+        <h5 class="tushum">44</h5>
+        <span>Tugallangan proyektlar</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-3 infEngineers">
+    <h5 class="col-12">Hodimlar:</h5>
+    <div *ngFor="let engineer of engineers" class="col-12 col-sm-6 col-lg-4 col-xl-12">
+      <h6 class="animated lightSpeedIn">
+        <img src="{{engineer.imgLink}}"> {{engineer.firstName}} {{engineer.lastName}}</h6>
+    </div>
+  </div>
+  <!-- <h2 style="margin: 0 auto;">On-going proyektlar</h2> -->
+</div>
+<!-- <div class="row" style="margin: 15px">
+  <div class="bestProjectsRow">
+    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let projectItem of liveProjects">
+      <app-project-item [project] = 'projectItem'></app-project-item>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin: unset">
+  <h2 style="margin: 3% auto">Yopilgan proyektlar</h2>
+</div>
+<div class="row" style="margin: 15px">
+  <div class="bestProjectsRow">
+    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let projectItem of finishedProjects">
+      <app-project-item [project] = 'projectItem'></app-project-item>
+    </div>
+  </div>
+</div> -->

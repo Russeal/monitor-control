@@ -1,0 +1,10 @@
+<div class="markazList" *ngIf='centers'>
+  <div class="row">
+    <h2>Markazlar</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-4 col-lg-4 markazItem animated" *ngFor="let centerItem of centers; let i = index" [ngClass]="{ 'fadeInLeftBig' : i === 0, 'fadeInUpBig' : i === 1, 'fadeInRightBig' : i === 2 }">
+      <app-center-item [center]='centerItem'></app-center-item>
+    </div>
+  </div>
+</div>

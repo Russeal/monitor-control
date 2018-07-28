@@ -1,0 +1,30 @@
+<div class="col-12 addDep" *ngIf="department">
+  <div class="row">
+    <h2>{{departmentName}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInLeft" id="uploadImg4">
+        <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
+        <button *ngIf="isImgChoosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
+        <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+        <button *ngIf="isImgReady" class="btn btn-outline-danger btn-sm" (click)="removeImg()">Remove</button>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4 animated fadeInRight">
+       <div class="md-form">
+        <input mdbActive type="text" id="formDepName2" class="form-control" [change]="onChangeName()" [(ngModel)]="departmentName">
+        <label for="formDepName2">Bo'lim nomi</label>
+      </div>
+      <label for="selCenter2">Markazni tanlang</label>
+      <select class="form-control" id="selCenter2" aria-placeholder="45">
+        <option disabled>Markazlar</option>
+        <option value="{{center.id}}" *ngFor="let center of centers" [attr.selected]="center.id === centerOfDepartment.id ? true : null">{{ center.name }}</option>
+      </select>
+      <label for="selManager2">Menejerni tanlang</label>
+      <select class="form-control" id="selManager2" aria-placeholder="45">
+        <option disabled selected>Hodimlar</option>
+        <option value="{{engineer.id}}" *ngFor="let engineer of engineers" [attr.selected]="engineer.id === fuckId ? true : null">{{ engineer.firstName }} {{ engineer.lastName }}</option>
+      </select>
+      <button type="submit" class="btn btn-info saveDep" (click)="saveDep()" [attr.disabled]="!isDepReady ? true : null">Saqlash</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="departmentsList">
+  <div class="row">
+    <h2>Bo'limlar</h2>
+  </div>
+  <div>
+    <section class="row">
+      <a (click)="getAllDeps($event)" class="active2">All</a>
+      <a (click)="getDepListByCenter(center.id, $event)" *ngFor="let center of centers">{{center.name}}</a>
+    </section>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor = "let departmentItem of departments">
+      <app-department-item [department] = 'departmentItem'></app-department-item>
+    </div>
+  </div>
+</div>

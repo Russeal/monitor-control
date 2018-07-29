@@ -13,31 +13,12 @@ import { DepartmentDto } from '../dto/departmentDto';
 import { ProjectDepartmentDto } from '../dto/projectDepartmentDto';
 import { ProfileDto } from '../dto/profileDto';
 import { DeadlineDto } from '../dto/deadlineDto';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
 
 @Injectable()
 export class ProjectsService {
 
     constructor(private http: HttpClient) {
-    }
-
-    public getProjects() {
-        return [
-            {id:0, name: 'Logo Futbol', description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/hum.png'},
-            {id:1, name: 'Humanoid Robot', description: 'Axborot Texnologiyalari', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/bot.jpg'},
-            {id:2, name: "Brayl kitobi", description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/blind.jpg'},
-            {id:3, name: 'Logo Futbol', description: 'Robototexnika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/hum.png'},
-            {id:4, name: 'Humanoid Robot', description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/bot.jpg'}
-        ];
-    }
-
-    public getBestProjects() {
-        return [
-            {id:0, name: 'Logo Futbol', description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/hum.png'},
-            {id:1, name: 'Humanoid Robot', description: 'Axborot Texnologiyalari', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/bot.jpg'},
-            {id:2, name: "Brayl kitobi", description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/blind.jpg'},
-            {id:3, name: 'Logo Futbol', description: 'Robototexnika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/hum.png'},
-            {id:4, name: 'Humanoid Robot', description: 'Mexatronika', profile: { firstName: 'Davron', lastName: 'Boriykhon'}, imageLink: 'assets/images/bot.jpg'}
-        ];
     }
 
     public createProject(project: ProjectDto) {
@@ -46,7 +27,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -57,7 +38,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -68,7 +49,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -81,7 +62,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -94,7 +75,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -105,7 +86,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -118,7 +99,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
         
@@ -131,7 +112,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -142,7 +123,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -153,7 +134,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -166,7 +147,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -177,7 +158,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -190,7 +171,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -201,7 +182,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -212,7 +193,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -225,7 +206,7 @@ export class ProjectsService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 

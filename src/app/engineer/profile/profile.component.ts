@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit {
   private getMyProfile() {
     this.profileService.getMyProfile().subscribe(
       (data) => {
-        console.log(data);
         this.profile = data;
         if (data.skills) {
           this.skills = data.skills.split(',');

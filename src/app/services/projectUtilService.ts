@@ -6,6 +6,7 @@ import { GeneralURL } from '../utils/generalUrl';
 import { ProjectUtilDto } from '../dto/projectUtilDto';
 import { CountDto } from '../dto/countDto';
 import { StateTreeDto } from '../dto/stateTreeDto';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
 
 @Injectable()
 export class ProjectUtilService {
@@ -17,7 +18,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -28,7 +29,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -39,7 +40,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -50,7 +51,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -61,7 +62,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -72,7 +73,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -83,7 +84,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -94,7 +95,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -105,7 +106,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -116,7 +117,7 @@ export class ProjectUtilService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 

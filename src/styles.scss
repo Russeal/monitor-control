@@ -856,7 +856,7 @@ nav.navbar ul li a span.numb {
 
 .proMinInf, .skillList .row {
     margin: unset;
-    padding: unset;
+    padding: 10px 0px;
 }
 
 .projectItem .entry-meta {
@@ -1102,6 +1102,7 @@ nav.navbar ul li a span.numb {
 .skillList h5 {
     max-width: calc(100% - 25px);
     margin-right: 5px;
+    margin-bottom: unset;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

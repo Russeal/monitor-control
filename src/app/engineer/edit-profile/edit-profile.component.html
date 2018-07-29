@@ -50,13 +50,13 @@
         </div>
         <div class="row">
           <div class="col-9 col-sm-6">
-            <label for="editEngIn5">Ilmiy darajasi</label>
+            <label for="editEngIn5" style="font-size: 0.8rem">Ilmiy darajasi</label>
             <select class="form-control" id="addEngIn5" aria-placeholder="45">
               <option disabled selected>Ilmiy darajalar: </option>
               <option value="{{degree}}" *ngFor="let degree of degrees" [attr.selected]="degree === profile.studyDegree ? true : null">{{ degree }}</option>
             </select>
           </div>
-          <div class="md-form col-9 col-sm-6" style="margin-top: 18px">
+          <div class="md-form col-9 col-sm-6" style="margin-top: 30px">
               <input mdbInputDirective type="text" id="editEngIn6" name="studyPlace" class="form-control" [(ngModel)]="profile.studyPlace">
               <label for="editEngIn6">Ilmiy maskani</label>
           </div>
@@ -65,7 +65,7 @@
           <div class="md-form col-9 col-sm-6 animated tada row skillAdd">
             <input mdbInputDirective type="text" id="editEngIn7" name="skills" class="form-control" [(ngModel)]="newSkill">
             <label for="editEngIn7">Mutahassisliklari</label>
-            <a (click)="addSkill()"><i class="fa fa-plus-circle"></i></a>
+            <a (click)="addSkill()" style="margin-top: -14px;"><i class="fa fa-plus-circle"></i></a>
           </div>
           <div class="md-form col-9 col-sm-6 animated tada row skillList">
             <div class="col-6 row" *ngFor="let skill of skills">

@@ -6,6 +6,7 @@ import { GeneralURL } from '../utils/generalUrl';
 import { GeneralKey } from '../utils/generalKey';
 import { CountDto } from '../dto/countDto';
 import { RoleDto } from '../dto/roleDto';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -15,7 +16,7 @@ export class AdminGuard implements CanActivate {
     constructor(private router: Router, private http: HttpClient) { }
  
     canActivate(route: ActivatedRouteSnapshot) {
-        if(localStorage.getItem('userType') === 'super_user'){
+        if(LocalStorageSecurity.getItem('userType') === 'super_user'){
             this.isSuperAdmin = true;
         }
         this.getRole();
@@ -44,7 +45,7 @@ export class AdminGuard implements CanActivate {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 

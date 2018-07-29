@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { NotificationService } from '../../services/notificationService';
 import { NotificationDto } from '../../dto/notificationDto';
+import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,15 +26,15 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     // Usertype bn menular sonini olish
-    if (localStorage.getItem('userType') === 'super_user') {
+    if (LocalStorageSecurity.getItem('userType') === 'super_user') {
       this.isSuperAdmin = true;
       this.n = 6;
     } else {
       this.n = 5;
     }
 
-    this.name = localStorage.getItem('name') + ' ' + localStorage.getItem('surname');
-    this.imgSrc = localStorage.getItem('profileImg');
+    this.name = LocalStorageSecurity.getItem('name') + ' ' + LocalStorageSecurity.getItem('surname');
+    this.imgSrc = LocalStorageSecurity.getItem('profileImg');
 
     this.getNotificationList();
     // Navbarni dizaynini o'zgartirib turish.

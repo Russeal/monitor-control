@@ -8,6 +8,7 @@ import { CenterDto } from '../dto/centerDto';
 import { CountDto } from '../dto/countDto';
 import { DepManagerDto } from '../dto/depManagerDto';
 import { ProfileDto } from '../dto/profileDto';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
 
 @Injectable()
 export class DepartmentService {
@@ -18,7 +19,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };        
 
@@ -31,7 +32,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -43,7 +44,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -54,7 +55,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -65,7 +66,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -76,7 +77,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -87,7 +88,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -100,7 +101,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -111,7 +112,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -128,7 +129,7 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -141,30 +142,10 @@ export class DepartmentService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
         return this.http.put<CountDto>(GeneralURL.managerURL.concat('department/update'), json, options);
-    }
-
-    public getOngoingProjects(depId: number) {
-        return [
-            {id:0, title: 'Logo Futbol', department: 'Mexatronika', authors: ['Davron', 'Boriykhon', 'Sardor'], imgSrc: 'assets/images/hum.png'},
-            {id:1, title: 'Humanoid Robot', department: 'Axborot Texnologiyalari', authors: ['Firdavs'], imgSrc: 'assets/images/bot.jpg'},
-            {id:2, title: "Brayl kitobi", department: 'Mexatronika', authors: ["O'lmas", 'Laziz'], imgSrc: 'assets/images/blind.jpg'},
-            {id:3, title: 'Logo Futbol', department: 'Robototexnika', authors: ['Davron', 'Boriykhon', 'Sardor'], imgSrc: 'assets/images/hum.png'},
-            {id:4, title: 'Humanoid Robot', department: 'Mexatronika', authors: ['Firdavs'], imgSrc: 'assets/images/bot.jpg'}
-        ];
-    }
-
-    public getFinishedProjects(depId: number) {
-        return [
-            {id:0, title: 'Logo Futbol', department: 'Mexatronika', authors: ['Davron', 'Boriykhon', 'Sardor'], imgSrc: 'assets/images/hum.png'},
-            {id:1, title: 'Humanoid Robot', department: 'Axborot Texnologiyalari', authors: ['Firdavs'], imgSrc: 'assets/images/bot.jpg'},
-            {id:2, title: "Brayl kitobi", department: 'Mexatronika', authors: ["O'lmas", 'Laziz'], imgSrc: 'assets/images/blind.jpg'},
-            {id:3, title: 'Logo Futbol', department: 'Robototexnika', authors: ['Davron', 'Boriykhon', 'Sardor'], imgSrc: 'assets/images/hum.png'},
-            {id:4, title: 'Humanoid Robot', department: 'Mexatronika', authors: ['Firdavs'], imgSrc: 'assets/images/bot.jpg'}
-        ];
     }
 }

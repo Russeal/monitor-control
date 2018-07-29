@@ -6,6 +6,7 @@ import { ImageDto } from '../dto/imageDto';
 import { GeneralKey } from '../utils/generalKey';
 import { AttachDto } from '../dto/attachDto';
 import { CountDto } from '../dto/countDto';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
 
 @Injectable()
 export class ImageService {
@@ -33,7 +34,7 @@ export class ImageService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -44,7 +45,7 @@ export class ImageService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -55,7 +56,7 @@ export class ImageService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 
@@ -66,7 +67,7 @@ export class ImageService {
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'authorization': localStorage.getItem(GeneralKey.TOKEN)
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
             })
         };
 

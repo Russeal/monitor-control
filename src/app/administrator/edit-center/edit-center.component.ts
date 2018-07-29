@@ -86,7 +86,6 @@ export class EditCenterComponent implements OnInit {
 
   updateCenterImage() {
     this.centerService.updateImage(this.centerId, this.srcName).subscribe(
-      data => console.log(data),
       error => console.log(error)
     );
   }
@@ -126,7 +125,6 @@ export class EditCenterComponent implements OnInit {
     manager.id =  this.centerId;
 
     this.centerService.createCenterManager(manager).subscribe(
-      data => console.log(data),
       error => console.log(error)
     );
   }
@@ -137,7 +135,6 @@ export class EditCenterComponent implements OnInit {
     manager.id =  this.centerId;
 
     this.centerService.updateCenterManager(manager).subscribe(
-      data => console.log(data),
       error => console.log(error)
     );
   }

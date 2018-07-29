@@ -69,7 +69,6 @@ export class UpdateProjectComponent implements OnInit {
         this.getAttachedFiles();
         this.getPossibleEmployees();
         this.countSalaries();
-        console.log(data);
       },
       error => console.log(error)
     );
@@ -270,7 +269,6 @@ export class UpdateProjectComponent implements OnInit {
 
     this.projectService.updateDeadline(newDealine).subscribe(
       (data) => {
-        console.log(data)
         this.getProject();
       },
       error => console.log(error)

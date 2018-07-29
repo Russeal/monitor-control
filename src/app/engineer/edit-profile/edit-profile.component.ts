@@ -4,6 +4,7 @@ import { ProfileService } from '../../services/profileService';
 import { Router } from '@angular/router';
 import { ImageDto } from '../../dto/imageDto';
 import { ImageService } from '../../services/imageService';
+import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-edit-profile',
@@ -141,8 +142,7 @@ export class EditProfileComponent implements OnInit {
 
     this.profileService.updateMyImage(profile).subscribe(
       (data) => {
-        console.log(data)
-        localStorage.setItem('profileImg', data.imageLink);
+        LocalStorageSecurity.setItem('profileImg', data.imageLink);
       },
       error => console.log(error)
     );

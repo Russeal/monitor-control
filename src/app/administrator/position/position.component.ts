@@ -65,7 +65,6 @@ export class PositionComponent implements OnInit {
   saveEdited() {
     this.positionService.updatePosition(this.editingPos).subscribe(
       (data) => {
-        console.log(data);
         this.isEditing = false;
         document.querySelector('.editing').classList.remove('editing');
         this.getPositions();

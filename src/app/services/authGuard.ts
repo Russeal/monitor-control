@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { LocalStorageSecurity } from '../dto/localStorageSecurity';
  
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -7,7 +8,7 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router) { }
  
     canActivate(route: ActivatedRouteSnapshot) {
-        if (localStorage.getItem('name')) {
+        if (LocalStorageSecurity.getItem('name')) {
             // logged in so return true
             return true;
         }

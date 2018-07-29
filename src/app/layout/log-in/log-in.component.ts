@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../../services/profileService';
 import { ProfileDto } from '../../dto/profileDto';
 import { GeneralKey } from '../../utils/generalKey';
+import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-log-in',
@@ -32,13 +33,20 @@ export class LogInComponent implements OnInit {
         this.profileService.authorization(profile).subscribe(
           (data) => {            
             if (data.state === 1) {
-              localStorage.setItem(GeneralKey.ROLE, data.roles[0].name);
-              localStorage.setItem(GeneralKey.NAME, data.firstName);
-              localStorage.setItem(GeneralKey.SURNAME, data.lastName);
+              LocalStorageSecurity.setItem(GeneralKey.ROLE, data.roles[0].name);
+              LocalStorageSecurity.setItem(GeneralKey.NAME, data.firstName);
+              LocalStorageSecurity.setItem(GeneralKey.SURNAME, data.lastName);
+              LocalStorageSecurity.setItem(GeneralKey.TOKEN, data.token);
+
+              // localStorage.setItem(GeneralKey.ROLE, data.roles[0].name);
+              // localStorage.setItem(GeneralKey.NAME, data.firstName);
+              // localStorage.setItem(GeneralKey.SURNAME, data.lastName);
+              // localStorage.setItem(GeneralKey.TOKEN, data.token);
               if (data.imageLink) {
-                localStorage.setItem(GeneralKey.PROFILEIMG, data.imageLink);                
+                LocalStorageSecurity.setItem(GeneralKey.PROFILEIMG, data.imageLink);
+
+                // localStorage.setItem(GeneralKey.PROFILEIMG, data.imageLink);
               }
-              localStorage.setItem(GeneralKey.TOKEN, data.token);
               this.router.navigate(['profile']);
             } else {
               this.isInvalidLogin = true;

@@ -115,9 +115,6 @@ export class EditDepartmentComponent implements OnInit {
 
   updateDepartmentImg() {
     this.departmentService.updateDepartmentImage(this.departmentId, this.image.imageName).subscribe(
-      (data) => {
-        console.log(data)
-      },
       error => console.log(error)
     );
   }
@@ -158,7 +155,6 @@ export class EditDepartmentComponent implements OnInit {
     manager.dmId = parseInt((<HTMLInputElement>document.getElementById('selManager2')).value);
 
     this.departmentService.createDepartmentManager(manager).subscribe(
-      data => console.log(data),
       error => console.log(error)
     );
   }
@@ -169,7 +165,6 @@ export class EditDepartmentComponent implements OnInit {
     manager.dmId = parseInt((<HTMLInputElement>document.getElementById('selManager2')).value);
 
     this.departmentService.updateDepartmentManager(manager).subscribe(
-      data => console.log(data),
       error => console.log(error)
     );
   }

@@ -18,7 +18,10 @@ export class DepartmentDetailComponent implements OnInit {
   public finishedProjects;
   public isSuperUser: Boolean = false;
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private depService: DepartmentService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private depService: DepartmentService) {
+    this.liveProjects = [];
+    this.finishedProjects = [];
+  }
 
   ngOnInit() {
     this.activeRoute.params.forEach(params => {
@@ -26,7 +29,7 @@ export class DepartmentDetailComponent implements OnInit {
     });
 
     this.getDepartment();
-    this.getProjects();
+    // this.getProjects();
 
     if (localStorage.getItem('userType') === 'super_user') {
       this.isSuperUser = true;
@@ -68,7 +71,7 @@ export class DepartmentDetailComponent implements OnInit {
   }
 
   getProjects() {
-    this.liveProjects = this.depService.getOngoingProjects(this.depId);
-    this.finishedProjects = this.depService.getFinishedProjects(this.depId);
+    // this.liveProjects = this.depService.getOngoingProjects(this.depId);
+    // this.finishedProjects = this.depService.getFinishedProjects(this.depId);
   }
 }

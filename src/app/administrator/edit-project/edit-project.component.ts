@@ -229,7 +229,6 @@ export class EditProjectComponent implements OnInit {
       (data) => {
         if (data.state === 1) {
           this.chosenFiles.splice(i, 1);
-          console.log(data);
         }
       },
       error => console.log(error)

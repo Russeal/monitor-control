@@ -1658,6 +1658,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     span.inputVal {
         display: none
     }
+    label {
+        pointer-events: none
+    }
 }
 .fade:not(.show) {
     opacity: 1;

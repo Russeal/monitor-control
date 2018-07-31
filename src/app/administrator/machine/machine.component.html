@@ -3,17 +3,17 @@
     <h2>Dastgohlar</h2>
   </div>
   <div class="inputField">
-    <form class="row createForm" *ngIf="!isEditing">
-      <input type="text" placeholder="Dastgoh nomi" [(ngModel)]="newMachine" [ngModelOptions]="{standalone: true}">
-      <input type="number" placeholder="Narxi" [(ngModel)]="price" step="1000" [ngModelOptions]="{standalone: true}">
-      <button type="submit" (click)="saveNewMachine()" [attr.disabled]="newMachine.length < 3 ? true : null">
+    <form class="row createForm md-form" *ngIf="!isEditing">
+      <input mdbInputDirective type="text" placeholder="Dastgoh nomi" [(ngModel)]="newMachine" [ngModelOptions]="{standalone: true}" required>
+      <input mdbInputDirective type="number" placeholder="Narxi" [(ngModel)]="price" step="1000" min="0" [ngModelOptions]="{standalone: true}" required>
+      <button type="submit" (click)="saveNewMachine()" [attr.disabled]="newMachine.length >= 3 && price >= 0 ? null : true">
         <i class="fa fa-plus-circle"></i>
       </button>
     </form>
-    <form class="row editForm" *ngIf="isEditing && editingMachine">
-      <input type="text" placeholder="Dastgoh nomi" [(ngModel)]="editingMachine.name" [ngModelOptions]="{standalone: true}">
-      <input type="number" placeholder="Narxi" [(ngModel)]="editingMachine.ph" step="1000" [ngModelOptions]="{standalone: true}">
-      <button type="submit" (click)="saveEdited()" [attr.disabled]="editingMachine.name.length < 3 ? true : null">
+    <form class="row editForm md-form" *ngIf="isEditing && editingMachine">
+      <input mdbInputDirective type="text" placeholder="Dastgoh nomi" [(ngModel)]="editingMachine.name" [ngModelOptions]="{standalone: true}" required>
+      <input mdbInputDirective type="number" placeholder="Narxi" [(ngModel)]="editingMachine.ph" step="1000" min="0" [ngModelOptions]="{standalone: true}" required>
+      <button type="submit" (click)="saveEdited()" [attr.disabled]="editingMachine.name.length >= 3 && editingMachine.ph >= 0 ? null : true">
         <i class="fa fa-pencil-square-o"></i>
       </button>
       <button (click)="cancelEditing()">

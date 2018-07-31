@@ -72,7 +72,7 @@
     </div>
     <form class="col-12 col-md-6 col-lg-3 row mtrlOutlay">
       <div class="md-form col-10">
-        <input mdbActive type="number" id="deadline" [(ngModel)]="deadline" min="0"
+        <input mdbInputDirective type="number" id="deadline" [(ngModel)]="deadline" min="0"
               [ngModelOptions]="{standalone: true}"><span>kun</span>
         <label for="deadline">Muhlat</label>
       </div>
@@ -139,11 +139,11 @@
     </div>
     <form class="col-12 row mtrlOutlay">
       <div class="md-form col-3">
-        <input mdbActive type="text" id="MtrlName" class="form-control" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
+        <input mdbInputDirective type="text" id="MtrlName" class="form-control" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
         <label for="MtrlName">Material nomi</label>
       </div>
       <div class="md-form col-1">
-        <input mdbActive type="number" id="MtrlCount" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
+        <input mdbInputDirective type="number" id="MtrlCount" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()">
         <label for="MtrlCount">Miqdori</label>
       </div>
       <div class="unitForm col-1">
@@ -152,15 +152,15 @@
         </select>
       </div>
       <div class="md-form col-2" *ngIf="chosenUnit">
-        <input mdbActive type="number" id="MtrlPrice" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()"><span>so'm</span>
+        <input mdbInputDirective type="number" id="MtrlPrice" min="0" [ngModelOptions]="{standalone: true}" (blur)="checkMtrlWholePrice()"><span>so'm</span>
         <label for="MtrlPrice">Narxi / {{chosenUnit.name}}</label>
       </div>
       <div class="md-form col-2">
-        <input mdbActive type="number" id="MtrlWholePrice" [(ngModel)]="mtrlWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <input mdbInputDirective type="number" id="MtrlWholePrice" [(ngModel)]="mtrlWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
         <label for="MtrlWholePrice">Jami Narxi</label>
       </div>
       <div class="md-form col-2">
-        <input mdbActive type="text" id="MtrlLink" class="form-control" [ngModelOptions]="{standalone: true}">
+        <input mdbInputDirective type="text" id="MtrlLink" class="form-control" [ngModelOptions]="{standalone: true}">
         <label for="MtrlLink">Link</label>
       </div>
       <div class="col-1 plusButton">
@@ -210,15 +210,15 @@
         </select>
       </div>
       <div class="md-form col-2">
-        <input mdbActive type="number" id="EquipmentPrice" [(ngModel)]="equipPrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <input mdbInputDirective type="number" id="EquipmentPrice" [(ngModel)]="equipPrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
         <label for="EquipmentPrice">Narxi / soat</label>
       </div>
       <div class="md-form col-2">
-        <input mdbActive type="number" id="equipHour" min="0" [ngModelOptions]="{standalone: true}" (blur)="onEquipChange()"><span>soat</span>
+        <input mdbInputDirective type="number" id="equipHour" min="0" [ngModelOptions]="{standalone: true}" (blur)="onEquipChange()"><span>soat</span>
         <label for="equipHour">Ish vaqti</label>
       </div>
       <div class="md-form col-2">
-        <input mdbActive type="number" [(ngModel)]="equipWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <input mdbInputDirective type="number" [(ngModel)]="equipWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
         <label for="MtrlWholePrice">Jami Narxi</label>
       </div>
       <div class="col-1 plusButton">

@@ -135,7 +135,7 @@ export class CreateProjectComponent implements OnInit {
 
   onSelect(e) {
     this.src = e;
-    this.isImgChoosen = true
+    this.isImgChoosen = true;
   }
 
   onRemove() {
@@ -145,13 +145,13 @@ export class CreateProjectComponent implements OnInit {
   }
 
   saveImg() {
-    this.isImgReady = true;
     var file = this.dataURLtoFile(this.src, 'a.png');
     
     this.imageService.uploadImage(file).subscribe(
       (data) => {
         this.image = data;
         this.src = data.imageLink;
+        this.isImgReady = true;
       },
       error => console.log(error)
     );

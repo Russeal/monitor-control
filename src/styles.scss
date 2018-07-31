@@ -964,6 +964,10 @@ nav.navbar ul li a span.numb {
     margin:unset;
 }
 
+.chosenDeps {
+    margin: 0.5rem 0;
+}
+
 .projectItem .depar h4 {
     color: rgb(48, 70, 112);
     font-weight: 400;
@@ -1045,10 +1049,14 @@ nav.navbar ul li a span.numb {
     font-size: 14px;
 }
 
-.oneEngineer a h5, .projectItem .entry-meta p {
+.oneEngineer a h5, .projectItem .entry-meta p, .oneEngineer .row:first-of-type span {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+}
+
+.oneEngineer .row:first-of-type span {
+    margin-right: 10px
 }
 
 .addEngineer .createEngineerForm {
@@ -1227,7 +1235,7 @@ nav.navbar ul li a span.numb {
 }
 
 .departmentsList section::-webkit-scrollbar, .ntfcMenu::-webkit-scrollbar,
-.commentBlock .container::-webkit-scrollbar {
+.commentBlock .container::-webkit-scrollbar, span::-webkit-scrollbar {
     display: none;
 }
 
@@ -1651,12 +1659,13 @@ nav.navbar ul li a span.numb {
 
 
 
-
+#projectForm2 {
+    width: 100%
+}
 
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: #fff !important;
 }
-
 
 .md-form {
     span.inputVal {

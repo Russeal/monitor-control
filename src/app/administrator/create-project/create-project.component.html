@@ -49,9 +49,9 @@
       <div class="col-12 col-sm-6 animated fadeInRight">
         <div class="col-8 centerLash" id="uploadImg6">
           <p>Loyihaga tegishli rasmni kiriting:</p>
-          <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" (onReset)="onRemove()" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
+          <ngx-img *ngIf="!isImgReady" (onSelect)="onSelect($event)" [config]="{ crop: [ { ratio: 1.5 } ] }"></ngx-img>
           <button *ngIf="isImgChoosen && !isImgReady" class="btn btn-default" (click)="saveImg()">Rasmni Saqlang</button>
-          <img *ngIf="isImgReady" src="{{ src }}" class="savedImg">
+          <img *ngIf="isImgReady" src="{{src}}" class="savedImg">
           <button *ngIf="isImgReady" class="btn btn-outline-danger btn-sm" (click)="onRemove()">Remove</button>
         </div>
         <div class="col-8 centerLash form-group">

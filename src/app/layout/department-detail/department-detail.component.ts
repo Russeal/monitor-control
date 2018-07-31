@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DepartmentService } from '../../services/departmentService';
+import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-department-detail',
@@ -31,7 +32,7 @@ export class DepartmentDetailComponent implements OnInit {
     this.getDepartment();
     // this.getProjects();
 
-    if (localStorage.getItem('userType') === 'super_user') {
+    if (LocalStorageSecurity.getItem('userType') === 'super_user') {
       this.isSuperUser = true;
     }
     

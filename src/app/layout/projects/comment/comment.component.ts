@@ -3,6 +3,7 @@ import { CommentService } from '../../../services/commentService';
 import { ProjectDto } from '../../../dto/projectDto';
 import { CommentDto } from '../../../dto/commentDto';
 import { CountDto } from '../../../dto/countDto';
+import { LocalStorageSecurity } from '../../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-comment',
@@ -24,7 +25,7 @@ export class CommentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imgSrc = localStorage.getItem('profileImg');
+    this.imgSrc = LocalStorageSecurity.getItem('profileImg');
 
     this.getNotReadCommentsList(true);
 

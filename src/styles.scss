@@ -326,12 +326,16 @@
     height: 100%;
 }
 
-.saveClass, .saveDep {
+.saveClass {
+    float: right;
+    padding: 12px;
+}
+
+.saveDep {
     margin: 5% auto;
     display: block;
     padding: 12px;
 }
-
 .editCenter .md-form input {
     font-size: 20px;
 }

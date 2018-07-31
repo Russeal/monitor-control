@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CentersService } from '../../services/centersService';
+import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
 @Component({
   selector: 'app-center-detail',
@@ -26,7 +27,7 @@ export class CenterDetailComponent implements OnInit {
     });
 
     this.getCenter();
-    if(localStorage.getItem('userType') === 'super_user'){
+    if(LocalStorageSecurity.getItem('userType') === 'super_user'){
       this.isSuperUser = true;
     }
     

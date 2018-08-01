@@ -39,26 +39,9 @@
   <div class="col-12 col-xl-3 infEngineers">
     <h5 class="col-12">Hodimlar:</h5>
     <div *ngFor="let engineer of engineers" class="col-12 col-sm-6 col-lg-4 col-xl-12">
-      <h6 class="animated lightSpeedIn">
-        <img src="{{engineer.imgLink}}"> {{engineer.firstName}} {{engineer.lastName}}</h6>
-    </div>
-  </div>
-  <!-- <h2 style="margin: 0 auto;">On-going proyektlar</h2> -->
-</div>
-<!-- <div class="row" style="margin: 15px">
-  <div class="bestProjectsRow">
-    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let projectItem of liveProjects">
-      <app-project-item [project] = 'projectItem'></app-project-item>
+      <a routerLink="/employees/{{engineer.id}}" [queryParams]="{name: engineer.firstName}">
+        <h6 class="animated lightSpeedIn"> {{engineer.firstName}} {{engineer.lastName}}</h6>
+      </a>
     </div>
   </div>
 </div>
-<div class="row" style="margin: unset">
-  <h2 style="margin: 3% auto">Yopilgan proyektlar</h2>
-</div>
-<div class="row" style="margin: 15px">
-  <div class="bestProjectsRow">
-    <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let projectItem of finishedProjects">
-      <app-project-item [project] = 'projectItem'></app-project-item>
-    </div>
-  </div>
-</div> -->

@@ -1,6 +1,6 @@
 export class DeadlineDto {
-    public project_Id: number;
-    public project_deadline: number;
+    public id: number;
+    public deadline: number;
 
     constructor() {}
 }

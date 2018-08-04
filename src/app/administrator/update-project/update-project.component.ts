@@ -63,12 +63,14 @@ export class UpdateProjectComponent implements OnInit {
     this.allEmployees = [];
     this.projectService.getProjectInfo(this.projectId).subscribe(
       (data) => {
-        this.project = data;
-        this.isPm = data.isPm;
-        this.isSuperUser = data.isCeo;
-        this.getAttachedFiles();
-        this.getPossibleEmployees();
-        this.countSalaries();
+        if (data.state !== -1) {
+          this.project = data;
+          this.isPm = data.isPm;
+          this.isSuperUser = data.isCeo;
+          this.getAttachedFiles();
+          this.getPossibleEmployees();
+          this.countSalaries();
+        }
       },
       error => console.log(error)
     );
@@ -92,7 +94,7 @@ export class UpdateProjectComponent implements OnInit {
 
   getAttachedFiles() {
     this.files = [];
-    this.imgService.getAllAttachs(this.project.id).subscribe(
+    this.imgService.getAllAttachs(this.projectId).subscribe(
       (data) => {
         if(data.length > 0) {
           this.files = data;
@@ -264,12 +266,14 @@ export class UpdateProjectComponent implements OnInit {
 
   saveDeadline() {
     var newDealine = new DeadlineDto();
-    newDealine.project_Id = this.project.id;
-    newDealine.project_deadline = this.deadline;
+    newDealine.id = this.project.id;
+    newDealine.deadline = this.deadline;
 
     this.projectService.updateDeadline(newDealine).subscribe(
       (data) => {
-        this.getProject();
+        if (data.state === 1) {
+          this.getProject();
+        }
       },
       error => console.log(error)
     );

@@ -202,7 +202,7 @@ export class ProjectsService {
 
     public updateDeadline(deadline: DeadlineDto) {
         let json = JSON.stringify(deadline);
-        
+
         let options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -210,6 +210,6 @@ export class ProjectsService {
             })
         };
 
-        return this.http.post(GeneralURL.projectURL.concat('update_deadline'), json, options);
+        return this.http.put<CountDto>(GeneralURL.projectURL.concat('update_deadline'), json, options);
     }
 }

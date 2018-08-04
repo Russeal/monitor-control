@@ -101,7 +101,7 @@
           <option value="{{employee.id}}" *ngFor="let employee of employees">{{ employee.firstName }} {{ employee.lastName }}</option>
         </select>
       </div>
-      <div class="col-3">
+      <div class="col-3 md-form" style="margin: unset; margin-top: 0.5rem">
         <input type="number" [(ngModel)]="salary" step="1000" min="0" [ngModelOptions]="{standalone: true}"><span>so'm</span>
       </div>
       <div class="col-1 plusButton">
@@ -203,22 +203,22 @@
       <h2>Jihozlar</h2>
     </div>
     <form class="col-12 col-md-9 row equipOutlay">
-      <div class="col-5">
+      <div class="col-4" style="height: fit-content; margin: 0.85rem 0;">
         <select class="form-control" id="chooseEquipToPro" aria-placeholder="45" (change)="onEquipChange()">
           <option selected>Jihozlar</option>
           <option value="{{equipment.id}}" *ngFor="let equipment of equipments">{{ equipment.name }}</option>
         </select>
       </div>
-      <div class="md-form col-2">
-        <input mdbInputDirective type="number" id="EquipmentPrice" [(ngModel)]="equipPrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+      <div class="col-2 md-form">
+        <input mdbInputDirective style="max-width: 100%;" type="number" id="EquipmentPrice" [(ngModel)]="equipPrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
         <label for="EquipmentPrice">Narxi / soat</label>
       </div>
-      <div class="md-form col-2">
-        <input mdbInputDirective type="number" id="equipHour" min="0" [ngModelOptions]="{standalone: true}" (blur)="onEquipChange()"><span>soat</span>
+      <div class="col-2 md-form">
+        <input mdbInputDirective style="max-width: 100%;" type="number" id="equipHour" min="0" [ngModelOptions]="{standalone: true}" (blur)="onEquipChange()"><span>soat</span>
         <label for="equipHour">Ish vaqti</label>
       </div>
       <div class="md-form col-2">
-        <input mdbInputDirective type="number" [(ngModel)]="equipWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
+        <input mdbInputDirective style="max-width: 100%;" type="number" [(ngModel)]="equipWholePrice" min="0" [ngModelOptions]="{standalone: true}" disabled><span>so'm</span>
         <label for="MtrlWholePrice">Jami Narxi</label>
       </div>
       <div class="col-1 plusButton">

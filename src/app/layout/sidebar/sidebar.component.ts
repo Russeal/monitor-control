@@ -4,7 +4,7 @@ import { NotificationService } from '../../services/notificationService';
 import { NotificationDto } from '../../dto/notificationDto';
 import { LocalStorageSecurity } from '../../dto/localStorageSecurity';
 
-const MINUTES_UNITL_AUTO_LOGOUT = 0.5; // in mins
+const MINUTES_UNITL_AUTO_LOGOUT = 5; // in mins
 const CHECK_INTERVAL = 15000; // in ms
 const STORE_KEY = 'lastAction';
 

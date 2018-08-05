@@ -10,6 +10,7 @@ export class ProjectDto {
     public state: number;
     public id: number;
     public dId: number;
+    public deadline: number;
     public name: string;
     public description: string;
     public imgLink: string;

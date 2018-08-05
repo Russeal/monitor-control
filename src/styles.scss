@@ -968,7 +968,7 @@ nav.navbar ul li a span.numb {
 }
 
 .chosenDeps {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 !important
 }
 
 .projectItem .depar h4 {
@@ -1026,7 +1026,7 @@ nav.navbar ul li a span.numb {
 }
 
 .mtrlOutlay .unitForm {
-    margin-top: 0.85rem;
+    margin-top: 0.875rem;
     margin-bottom: unset;
     border-radius: unset;
     padding: 0 8px;
@@ -1104,9 +1104,13 @@ nav.navbar ul li a span.numb {
 .machinesCRUD input[type=number]::-webkit-inner-spin-button,
 .machinesCRUD input[type=number]::-webkit-outer-spin-button,
 .outlay input[type=number]::-webkit-inner-spin-button,
-.outlay input[type=number]::-webkit-outer-spin-button, {
-    -webkit-appearance: none; 
+.outlay input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
     margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance: textfield !important;
 }
 
 #editEngIn7 {
@@ -1670,7 +1674,7 @@ nav.navbar ul li a span.numb {
 
 
 
-#projectForm2 {
+#projectForm2, #proEditForm2 {
     width: 100%
 }
 

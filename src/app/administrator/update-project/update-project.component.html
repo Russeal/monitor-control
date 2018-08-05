@@ -8,11 +8,11 @@
           <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                   <div class="modal-body">
-                    <h5 class="modal-title w-100" id="myModalLabel">Do you want to start this Project?</h5>
+                    <h5 class="modal-title w-100" id="myModalLabel">Proyekt boshlanishini hohlaysizmi?</h5>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectStartModal.hide()" mdbRippleRadius>No</button>
-                      <button type="button" class="btn btn-primary btn-sm waves-light" (click)="startProject()" mdbRippleRadius>Yes, start</button>
+                      <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectStartModal.hide()" mdbRippleRadius>Yoq</button>
+                      <button type="button" class="btn btn-primary btn-sm waves-light" (click)="startProject()" mdbRippleRadius>Ha</button>
                   </div>
               </div>
           </div>
@@ -27,21 +27,21 @@
         <h2 style="display: inline-block">{{ project.name }}</h2>
         <a routerLink="edit-project" class="saveClass" style="color: green" *ngIf="isSuperUser"><i class="fa fa-pencil-square-o"></i></a>
         <a (click)="projectDeleteModal.show()" class="saveClass" style="color: red" *ngIf="isSuperUser">
-          <div mdbModal #projectDeleteModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                      <h5 class="modal-title w-100" id="myModalLabel">Do you want to delete this Project?</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectDeleteModal.hide()" mdbRippleRadius>No</button>
-                        <button type="button" class="btn btn-primary btn-sm waves-light" (click)="deleteProject()" mdbRippleRadius>Yes, delete</button>
-                    </div>
-                </div>
-            </div>
-          </div>
           <i class="fa fa-trash"></i>
         </a>
+        <div mdbModal #projectDeleteModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+          <div class="modal-dialog modal-md" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                    <h5 class="modal-title w-100" id="myModalLabel2">Ushbu proyektni o'chirmoqchimisiz?</h5>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectDeleteModal.hide()" mdbRippleRadius>Yoq</button>
+                      <button type="button" class="btn btn-primary btn-sm waves-light" (click)="deleteProject()" mdbRippleRadius>Ha</button>
+                  </div>
+              </div>
+          </div>
+        </div>
       </div>
       <h5 *ngIf="project.profile.id"><i>Manager: </i>{{project.profile.firstName}} {{project.profile.lastName}}</h5>
       <div class="row">
@@ -66,14 +66,18 @@
     </div>
   </div>
   <hr>
-  <div class="col-12 outlay" *ngIf="isPm">
+  <div class="col-12 outlay" *ngIf="isPm || isSuperUser">
     <div class="row">
       <h2>Deadline</h2>
     </div>
-    <form class="col-12 col-md-6 col-lg-3 row mtrlOutlay">
+    <div class="col-xs-1" align="center" *ngIf="isSuperUser">
+      <p *ngIf="!project.deadline">Loyiha muddati hozircha belgilanmagan.</p>
+      <p *ngIf="deadline">Loyiha {{deadline}} kun muddat oladi.</p>
+    </div>
+    <form class="col-12 col-md-6 col-lg-3 row mtrlOutlay" *ngIf="isPm">
       <div class="md-form col-10">
         <input mdbInputDirective type="number" id="deadline" [(ngModel)]="deadline" min="0"
-              [ngModelOptions]="{standalone: true}"><span>kun</span>
+              [ngModelOptions]="{standalone: true}"><span style="right: 35px">kun</span>
         <label for="deadline">Muhlat</label>
       </div>
       <div class="col-2 plusButton">
@@ -102,7 +106,7 @@
         </select>
       </div>
       <div class="col-3 md-form" style="margin: unset; margin-top: 0.5rem">
-        <input type="number" [(ngModel)]="salary" step="1000" min="0" [ngModelOptions]="{standalone: true}"><span>so'm</span>
+        <input type="number" [(ngModel)]="salary" step="1000" min="0" [ngModelOptions]="{standalone: true}"><span style="right: 5px;">so'm</span>
       </div>
       <div class="col-1 plusButton">
         <button type="submit" (click)="saveNewEmp()" [attr.disabled]="!isEmpChosen ? true : null">

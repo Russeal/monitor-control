@@ -4,6 +4,7 @@
   </a>
   <header class="depar">
     <h4>{{ project.name }}</h4>
+    <p style="text-align: left; margin-left: 20px; font-size: 15px" *ngIf="project.projectState.projectInProgressDate">Boshlandi: {{ project.projectState.projectInProgressDate }}</p>
   </header>
   <div class="entry-meta">
     <a routerLink="{{project.id}}" class="entry-read-more-pointer"><span class="fa fa-angle-right"></span></a>

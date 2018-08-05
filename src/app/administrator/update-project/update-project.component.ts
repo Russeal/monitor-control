@@ -35,7 +35,6 @@ export class UpdateProjectComponent implements OnInit {
   public isEmpChosen: Boolean = false;
   public isMtrlReady: Boolean = false;
   public isEquipReady: Boolean = false;
-  public hasDeadline: Boolean = false;
   public files: Array<AttachDto>;
   public salary: number = 0;
   public mtrlWholePrice: number = 0;
@@ -64,8 +63,10 @@ export class UpdateProjectComponent implements OnInit {
     this.projectService.getProjectInfo(this.projectId).subscribe(
       (data) => {
         if (data.state !== -1) {
+          console.log(data);
           this.project = data;
           this.isPm = data.isPm;
+          this.deadline = data.deadline;
           this.isSuperUser = data.isCeo;
           this.getAttachedFiles();
           this.getPossibleEmployees();
@@ -277,8 +278,6 @@ export class UpdateProjectComponent implements OnInit {
       },
       error => console.log(error)
     );
-
-    this.hasDeadline = true;
   }
 
   saveNewEquip() {
@@ -359,7 +358,7 @@ export class UpdateProjectComponent implements OnInit {
     this.projectUtilService.pmAcceptProject(this.project.id).subscribe(
       (data) => {
         if (data.state === 1) {
-          this.router.navigate(["./projects/in-process-projects"]);
+          this.router.navigate(["./projects/new-planned-projects"]);
         }
       },
       error => console.log(error)

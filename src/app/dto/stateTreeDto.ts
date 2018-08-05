@@ -3,6 +3,7 @@ export class StateTreeDto {
     public stateNumber: number;
     public createDate: String;
     public stateName: string;
+    public projectInProgressDate: string;
     
     constructor() {}
 }

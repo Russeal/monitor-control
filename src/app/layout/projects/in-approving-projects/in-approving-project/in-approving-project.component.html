@@ -29,7 +29,7 @@
   <div class="row container" style="margin: unset">
     <h2>Loyiha qatnashchilari</h2>
   </div>
-  <div class="row" style="margin: 15px" *ngIf="emps">
+  <div class="row" style="margin: 15px; width: 100%" *ngIf="emps">
     <div class="bestProjectsRow">
       <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let emp of emps">
         <app-one-engineer [engineer] = 'emp'></app-one-engineer>

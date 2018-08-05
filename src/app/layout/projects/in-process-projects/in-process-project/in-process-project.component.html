@@ -17,8 +17,20 @@
         <h5>Bo'limlar:</h5>
         <h6 *ngFor="let department of project.projectDeps" class="animated lightSpeedIn" (mouseenter)="addClass($event)" (mouseleave)="removeClass($event)"><a routerLink="/departments/{{department.department.id}}">{{department.department.name}}</a></h6>
       </div>
-      <button class="btn btn-primary btn-md" style="margin: 20px auto" *ngIf="isPM"
-          (click)="submitProject()">Submit project</button>
+      <button class="btn btn-primary btn-md" style="margin: 20px auto" *ngIf="isPM" (click)="projectSubmit.show()">Proyektni topshirish</button>
+      <div mdbModal #projectSubmit="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="modal-title w-100" id="myModalLabel">Proyektni topshirmoqchimisiz?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectSubmit.hide()" mdbRippleRadius>Yoq</button>
+              <button type="button" class="btn btn-primary btn-sm waves-light" (click)="submitProject()" mdbRippleRadius>Ha</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-12 col-md-6 projectImgBlock">
       <img *ngIf="project.imgLink" src="{{project.imgLink}}" class="projectImg">
@@ -30,7 +42,7 @@
   <div class="row container" style="margin: unset">
     <h2>Loyiha qatnashchilari</h2>
   </div>
-  <div class="row" style="margin: 15px" *ngIf="emps">
+  <div class="row" style="margin: 15px; width: 100%" *ngIf="emps">
     <div class="bestProjectsRow">
       <div class="col-12 col-sm-8 col-lg-6 col-xl-4 animated fadeInRight" *ngFor="let emp of emps">
         <app-one-engineer [engineer] = 'emp'></app-one-engineer>

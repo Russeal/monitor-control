@@ -18,9 +18,35 @@
   </div>
   <div class="col-12 col-sm-3 col-md-4 proMinInfDeps">
     <button class="btn btn-primary btn-md" style="margin-bottom: 50px"
-        *ngIf="isSuperUser" (click)="finishProject()">Finish project</button>
+        *ngIf="isSuperUser" (click)="projectFinish.show()">Loyihani tugatish</button>
     <button class="btn btn-warning btn-md" style="margin-bottom: 50px"
-        *ngIf="isSuperUser" (click)="rejectProject()">Decline</button>
+        *ngIf="isSuperUser" (click)="projectDecline.show()">Bekor qilish</button>
+    <div mdbModal #projectFinish="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="modal-title w-100" id="myModalLabel">Loyihani tugatmoqchimisiz?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectFinish.hide()" mdbRippleRadius>Yoq</button>
+              <button type="button" class="btn btn-primary btn-sm waves-light" (click)="finishProject()" mdbRippleRadius>Ha</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div mdbModal #projectDecline="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="modal-title w-100" id="myModalLabel">Loyihani qayta ishlashga jo'natmoqchimisiz?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="projectDecline.hide()" mdbRippleRadius>Yoq</button>
+              <button type="button" class="btn btn-primary btn-sm waves-light" (click)="rejectProject()" mdbRippleRadius>Ha</button>
+            </div>
+          </div>
+        </div>
+    </div>
     <div class="col-12 minInfDeps">
       <h5>Bo'limlar:</h5>
       <h6 *ngFor="let department of project.projectDeps" class="animated lightSpeedIn" (mouseenter)="addClass($event)" (mouseleave)="removeClass($event)"><a routerLink="/departments/{{department.department.id}}">{{department.department.name}}</a></h6>

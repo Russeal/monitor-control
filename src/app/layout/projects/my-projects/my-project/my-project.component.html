@@ -4,6 +4,8 @@
     </a>
     <header class="depar">
       <h4>{{ project.name }}</h4>
+      <p style="text-align: left; margin-bottom: unset; margin-left: 20px; font-size: 15px" *ngIf="project.projectState.projectInProgressDate"><span style="color: blue">Boshlandi:</span> {{ project.projectState.projectInProgressDate }}</p>
+      <p style="text-align: left; margin-bottom: unset; margin-left: 20px; font-size: 15px" *ngIf="project.projectState.projectFinishedDate"><span style="color: green">Tugadi:</span> {{ project.projectState.projectFinishedDate }}</p>
     </header>
     <div class="entry-meta">
       <a class="entry-read-more-pointer" (click)="moveToProject()"><span class="fa fa-angle-right"></span></a>

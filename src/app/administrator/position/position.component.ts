@@ -32,13 +32,20 @@ export class PositionComponent implements OnInit {
 
   saveNewPos() {
     var position = new PositionDto;
-    position.name = this.newPos;
+    position.name = this.newPos.trim();
     this.positionService.createPosition(position).subscribe(
       (data) => {
-        this.newPos = '';
-        this.getPositions();
+        if (data.state === 1) {
+          this.newPos = '';
+          this.getPositions();
+        }
       },
-      error => console.log(error)
+      (error) => {
+        if (error.error.state === -1 && error.error.errMsg === "This name already exists, please choose another name.") {
+          document.getElementById("errModal11").click();
+          this.newPos = '';
+        }
+      }
     );
   }
 
@@ -65,11 +72,17 @@ export class PositionComponent implements OnInit {
   saveEdited() {
     this.positionService.updatePosition(this.editingPos).subscribe(
       (data) => {
-        this.isEditing = false;
-        document.querySelector('.editing').classList.remove('editing');
-        this.getPositions();
+        if (data.state === 1) {
+          this.isEditing = false;
+          document.querySelector('.editing').classList.remove('editing');
+          this.getPositions();
+        }
       },
-      error => console.log(error)
+      (error) => {
+        if (error.error.state === -1 && error.error.errMsg === "This name already exists, please choose another name.") {
+          document.getElementById("errModal11").click();
+        }
+      }
     );
   }
 

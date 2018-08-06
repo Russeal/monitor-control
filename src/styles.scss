@@ -459,6 +459,7 @@ form.logInForm {
 
 .opasinicity ul.collapsible, .projectEmps {
     padding-top: 5vh;
+    padding-bottom: 2vh;
 }
 
 .opasinicity ul {
@@ -855,12 +856,6 @@ nav.navbar ul li a span.numb {
     font-weight: 400;
 }
 
-.projectItem .depar h4 {
-    padding: 20px 20px 0;
-    font-size: 22px;
-    text-align: left;
-}
-
 .proMinInf, .skillList .row {
     margin: unset;
     padding: 10px 0px;
@@ -972,6 +967,10 @@ nav.navbar ul li a span.numb {
 }
 
 .projectItem .depar h4 {
+    padding: 15px 20px 0;
+    margin-bottom: unset;
+    font-size: 22px;
+    text-align: left;
     color: rgb(48, 70, 112);
     font-weight: 400;
 }
@@ -1117,13 +1116,18 @@ input[type=number] {
     width: calc(100% - 31px);
 }
 
-.skillAdd a {
-    height: fit-content;
-    position: relative;
-    top: 20px;
-    padding: 0 5px;
-    color: #11C851 !important;
-    font-size: 24px;
+.skillAdd {
+    button {
+        height: fit-content;
+        position: relative;
+        top: 20px;
+        padding: 0 5px;
+        color: #11C851 !important;
+        font-size: 24px;
+    }
+    button:disabled i {
+        color: #ccff90;
+    }
 }
 
 .skillList h5 {

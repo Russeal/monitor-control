@@ -58,7 +58,7 @@ export class PositionService {
             params: new HttpParams().set('name', position.name)
         }
 
-        return this.http.put(GeneralURL.positionURL.concat('update/' + position.id), options, options2);
+        return this.http.put<PositionDto>(GeneralURL.positionURL.concat('update/' + position.id), options, options2);
     }
 
     public deletePosition(posId) {

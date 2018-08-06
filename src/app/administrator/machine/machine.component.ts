@@ -35,20 +35,23 @@ export class MachineComponent implements OnInit {
 
   saveNewMachine() {
     var machine = new MachineDto;
-    machine.name = this.newMachine;
+    machine.name = this.newMachine.trim();
     machine.ph = this.price;
     
     this.machineService.createMachine(machine).subscribe(
       (data) => {
         if(data.state === 1) {
           this.getMachines();
+          this.newMachine = '';
+          this.price = null;
         }
       },
-      error => console.log(error)
+      (error) => {
+        if (error.error.state === -1 && error.error.errMsg === "This name already exists, please choose another name. ") {
+          document.getElementById("errModal22").click();
+        }
+      }
     );
-
-    this.newMachine = '';
-    this.price = null;
   }
 
   editMachine(id) {
@@ -79,7 +82,9 @@ export class MachineComponent implements OnInit {
         this.editingMachine = null;
         this.getMachines();
       },
-      error => console.log(error)
+      (error) => {
+        document.getElementById("errModal22").click();
+      }
     );
   }
 

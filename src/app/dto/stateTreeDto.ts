@@ -4,6 +4,7 @@ export class StateTreeDto {
     public createDate: String;
     public stateName: string;
     public projectInProgressDate: string;
+    public projectFinishedDate: string;
     
     constructor() {}
 }

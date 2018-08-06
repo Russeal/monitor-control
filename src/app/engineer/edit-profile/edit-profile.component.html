@@ -67,7 +67,11 @@
                   <div class="md-form col-9 row skillAdd">
                     <input mdbInputDirective type="text" id="editEngIn7" name="skills" class="form-control" [(ngModel)]="newSkill">
                     <label for="editEngIn7">Mutahassisliklari</label>
-                    <a (click)="addSkill()" style="margin-top: -14px;"><i class="fa fa-plus-circle"></i></a>
+                    <button (click)="addSkill()" style="margin-top: -14px; padding: unset;
+                            border: none; background: none;" [attr.disabled]=
+                            "newSkill.trim().length >= 3 ? null : true">
+                            <i class="fa fa-plus-circle"></i>
+                    </button>
                   </div>
                   <div class="md-form col-12 row skillList">
                     <div class="col-6 row" *ngFor="let skill of skills">

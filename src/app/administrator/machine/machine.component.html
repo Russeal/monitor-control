@@ -6,14 +6,14 @@
     <form class="row createForm md-form" *ngIf="!isEditing">
       <input mdbInputDirective type="text" placeholder="Dastgoh nomi" [(ngModel)]="newMachine" [ngModelOptions]="{standalone: true}" required>
       <input mdbInputDirective type="number" placeholder="Narxi" [(ngModel)]="price" step="1000" min="0" [ngModelOptions]="{standalone: true}" required>
-      <button type="submit" (click)="saveNewMachine()" [attr.disabled]="newMachine.length >= 3 && price >= 0 ? null : true">
+      <button type="submit" (click)="saveNewMachine()" [attr.disabled]="newMachine.trim().length >= 3 && price >= 0 ? null : true">
         <i class="fa fa-plus-circle"></i>
       </button>
     </form>
     <form class="row editForm md-form" *ngIf="isEditing && editingMachine">
       <input mdbInputDirective type="text" placeholder="Dastgoh nomi" [(ngModel)]="editingMachine.name" [ngModelOptions]="{standalone: true}" required>
       <input mdbInputDirective type="number" placeholder="Narxi" [(ngModel)]="editingMachine.ph" step="1000" min="0" [ngModelOptions]="{standalone: true}" required>
-      <button type="submit" (click)="saveEdited()" [attr.disabled]="editingMachine.name.length >= 3 && editingMachine.ph >= 0 ? null : true">
+      <button type="submit" (click)="saveEdited()" [attr.disabled]="editingMachine.name.trim().length >= 3 && editingMachine.ph >= 0 ? null : true">
         <i class="fa fa-pencil-square-o"></i>
       </button>
       <button (click)="cancelEditing()">
@@ -33,5 +33,18 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+<a style="display: none" id="errModal22" (click)="errModal2.show()"></a>
+<div mdbModal #errModal2="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title w-100" id="myModalLabel">Bu nomdagi dastgoh mavjud.</h5>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="errModal2.hide()" mdbRippleRadius>Yopish</button>
+          </div>
+      </div>
   </div>
 </div>

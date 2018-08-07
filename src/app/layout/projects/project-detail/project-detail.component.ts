@@ -52,12 +52,9 @@ export class ProjectDetailComponent implements OnInit {
   private getProjectStateTree() {
     this.projectUtilService.getPSTree(this.projectId).subscribe(
       (data) => {
-        console.log(data);
         for (let x of data) {
           this.dates.push(x.createDate.split(' ')[0]);
         }
-        console.log(this.dates);
-        
         document.getElementById("state" + data[data.length-1].stateNumber).classList.remove("btn-info");
         document.getElementById("state" + data[data.length-1].stateNumber).classList.add("btn-danger");
       },

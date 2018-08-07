@@ -23,6 +23,7 @@ export class EditProfileComponent implements OnInit {
   public src:string;
   public isImgChosen: Boolean = false;
   public isImgReady: Boolean = false;
+  public password: string = '';
   public degrees = [
     "O'rta-maxsus",
     "OTM talabasi",
@@ -48,6 +49,8 @@ export class EditProfileComponent implements OnInit {
     this.profileService.getMyProfile().subscribe(
       (data) => {
         this.profile = data;
+        console.log(data);
+        
         if(data.birthDate) {
           this.birthday = new Date(data.birthDate);
         }
@@ -78,7 +81,7 @@ export class EditProfileComponent implements OnInit {
   saveProfile() {
     this.profile.birthDate = (<HTMLInputElement>document.getElementById('editEngIn4')).value;
     this.profile.skills = this.skills.toString();
-    this.profile.studyDegree = (<HTMLInputElement>document.getElementById("addEngIn5")).value;
+    this.profile.studyDegree = (<HTMLInputElement>document.getElementById("editEngIn5")).value;
     this.profileService.updateProfile(this.profile).subscribe(
       (data) => {
         if(data.state === 1) {

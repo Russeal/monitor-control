@@ -36,6 +36,7 @@
   </div>
 </div>
 <a style="display: none" id="errModal22" (click)="errModal2.show()"></a>
+<a style="display: none" id="delMach1" (click)="delMach.show()"></a>
 <div mdbModal #errModal2="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -44,6 +45,19 @@
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="errModal2.hide()" mdbRippleRadius>Yopish</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div mdbModal #delMach="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title w-100" id="myModalLabel">Bu nomdagi ish o'rni mavjud.</h5>
+          </div>
+          <div class="modal-footer">
+              <button type="button" id="closeDelMach" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="delMach.hide()" mdbRippleRadius>Yoq</button>
+              <button type="button" class="btn btn-primary btn-sm waves-light" data-dismiss="modal" (click)="delMachine()" mdbRippleRadius>Ha</button>
           </div>
       </div>
   </div>

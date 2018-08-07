@@ -152,6 +152,7 @@ export class CreateProjectComponent implements OnInit {
         this.image = data;
         this.src = data.imageLink;
         this.isImgReady = true;
+        this.checkProject();
       },
       error => console.log(error)
     );

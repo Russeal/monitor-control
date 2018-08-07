@@ -14,6 +14,7 @@ export class PositionComponent implements OnInit {
   public editingPos: PositionDto;
   public positions;
   public isEditing: Boolean = false;
+  private chosenId: number;
 
   constructor(private positionService: PositionService) { }
 
@@ -61,12 +62,21 @@ export class PositionComponent implements OnInit {
   }
 
   deletePos(id: number) {
-    this.positionService.deletePosition(id).subscribe(
-      (data) => {
-        this.getPositions();
-      },
-      error => console.log(error)
-    );
+    this.chosenId = id;
+    document.getElementById("delPos1").click();
+  }
+
+  delPosition() {
+    if (this.chosenId) {
+      this.positionService.deletePosition(this.chosenId).subscribe(
+        (data) => {
+          this.chosenId = null;
+          document.getElementById("closeDelPos").click();
+          this.getPositions();
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   saveEdited() {

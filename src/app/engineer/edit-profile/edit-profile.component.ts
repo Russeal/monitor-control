@@ -24,6 +24,12 @@ export class EditProfileComponent implements OnInit {
   public isImgChosen: Boolean = false;
   public isImgReady: Boolean = false;
   public password: string = '';
+  public oldPass: string = '';
+  public newPass: string = '';
+  public newPass2: string = '';
+  public isErr1: boolean = false;
+  public isErr2: boolean = false;
+  public isErr3: boolean = false;
   public degrees = [
     "O'rta-maxsus",
     "OTM talabasi",
@@ -65,6 +71,24 @@ export class EditProfileComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  public changePassword() {
+    if (this.oldPass === this.profile.password) {
+      this.isErr1 = false;
+      if (this.oldPass !== this.newPass && this.newPass === this.newPass2) {
+        this.isErr2 = false;
+
+
+
+        // localStorage.clear();
+        // this.router.navigate(['log-in']);
+      } else {
+        this.isErr2 = true;
+      }
+    } else {
+      this.isErr1 = true;
+    }
   }
 
   addSkill() {

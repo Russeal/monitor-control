@@ -56,7 +56,7 @@ export class ProjectDetailComponent implements OnInit {
           this.dates.push(x.createDate.split(' ')[0]);
         }
         document.getElementById("state" + data[data.length-1].stateNumber).classList.remove("btn-info");
-        document.getElementById("state" + data[data.length-1].stateNumber).classList.add("btn-danger");
+        document.getElementById("state" + data[data.length-1].stateNumber).classList.add("btn-success");
       },
       error => console.log(error)
     );

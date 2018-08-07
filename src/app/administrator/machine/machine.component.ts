@@ -15,6 +15,7 @@ export class MachineComponent implements OnInit {
   public isEditing: boolean = false;
   public machines: Array<MachineDto>;
   public editingMachine: MachineDto;
+  private chosenId: number;
 
   constructor(private machineService: MachineService) {
     this.machines = [];
@@ -67,12 +68,21 @@ export class MachineComponent implements OnInit {
   }
 
   deleteMachine(id) {
-    this.machineService.deleteMachine(id).subscribe(
-      (data) => {
+    this.chosenId = id;
+    document.getElementById("delMach1").click();
+  }
+
+  delMachine() {
+    if (this.chosenId) {
+      this.machineService.deleteMachine(this.chosenId).subscribe(
+        (data) => {
+          this.chosenId = null;
+          document.getElementById("closeDelMach").click();
           this.getMachines();
-      },
-      error => console.log(error)
-    );
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   saveEdited() {

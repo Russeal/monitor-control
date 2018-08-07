@@ -1338,6 +1338,22 @@ input[type=number] {
 .projectDetail .projectImgBlock {
     margin: 0 auto;
 }
+
+.projectDetail {
+    .firstRow {
+        margin: 0 auto;
+        h4 {
+            padding: 15px;
+            margin: unset;
+            b {
+                vertical-align: sub
+            }
+        }
+        .btn:disabled {
+            opacity: unset
+        }
+    }
+}
 // log out modal
 
 // position

@@ -142,4 +142,17 @@ export class ProfileService {
 
         return this.http.get<Array<ProjectDto>>(GeneralURL.profileURL.concat('prof_proj/' + profileId), options);
     }
+
+    public UpdateLoginPass(newAuth: ProfileDto) {
+        let json = JSON.stringify(newAuth);
+        
+        let options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'authorization': LocalStorageSecurity.getItem(GeneralKey.TOKEN)
+            })
+        };
+
+        return this.http.put<CountDto>(GeneralURL.profileURL.concat('update_log_pswd'), json, options);
+    }
 }

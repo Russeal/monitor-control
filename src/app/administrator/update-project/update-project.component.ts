@@ -62,6 +62,8 @@ export class UpdateProjectComponent implements OnInit {
     this.allEmployees = [];
     this.projectService.getProjectInfo(this.projectId).subscribe(
       (data) => {
+        console.log(data);
+        
         if (data.state !== -1) {
           console.log(data);
           this.project = data;

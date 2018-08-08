@@ -1,14 +1,17 @@
 <div class="col-12 row projectDetail" *ngIf="project">
-  <div class="row" style="margin: 0 auto">
-    <h4 style="padding: 15px; margin: unset"><b>Loyihaning holati </b></h4>
-    <button class="btn btn-info" id="state2" disabled>Planning</button>
-    <button class="btn btn-info" id="state3" disabled>In Process</button>
-    <button class="btn btn-info" id="state4" disabled>Test</button>
-    <button class="btn btn-info" id="state5" disabled>Finished</button>
+  <div class="row firstRow">
+    <h4><b>Loyihaning holati </b></h4>
+    <button class="btn btn-info" id="state2" disabled>Rejaga kiritilgan<br/>{{dates[0]}}</button>
+    <button class="btn btn-info" id="state3" disabled>Boshlangan<br/>{{dates[1]}}</button>
+    <button class="btn btn-info" id="state4" disabled>Sinov muddatida<br/>{{dates[2]}}</button>
+    <button class="btn btn-info" id="state5" disabled>Tugatilgan<br/>{{dates[3]}}</button>
   </div>
   <h2 class="col-12">{{project.name}}</h2>
   <div class="col-12 col-sm-3 col-md-4">
     <h4><i>Loyiha rahbari:</i> {{project.profile.firstName}} {{project.profile.lastName}}</h4>
+    <br>
+    <p>Loyiha boshlangan sana: <span style="color: blue">{{dates[1]}}</span></p>
+    <p>Loyiha muddati: <span style="color: blue">{{project.deadline}} kun</span></p>
     <br>
     <p><i>Tavsif:</i> {{project.description}}</p>
     <br>

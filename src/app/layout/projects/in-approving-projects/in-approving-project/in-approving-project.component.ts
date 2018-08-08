@@ -19,11 +19,13 @@ export class InApprovingProjectComponent implements OnInit {
   public project: ProjectDto;
   public isSuperUser: Boolean = false;
   public emps: Array<ProfileDto>;
+  public dates: Array<String>;
   
   constructor(private activeRoute: ActivatedRoute, private router: Router,
               private profileService: ProfileService,
               private projectService: ProjectsService,
               private projectUtilService: ProjectUtilService) {
+                this.dates = [];
   }
 
   ngOnInit() {
@@ -51,8 +53,11 @@ export class InApprovingProjectComponent implements OnInit {
   private getProjectStateTree() {
     this.projectUtilService.getPSTree(this.projectId).subscribe(
       (data) => {
+        for (let x of data) {
+          this.dates.push(x.createDate.split(' ')[0]);
+        }
         document.getElementById("state" + data[data.length-1].stateNumber).classList.remove("btn-info");
-        document.getElementById("state" + data[data.length-1].stateNumber).classList.add("btn-danger");
+        document.getElementById("state" + data[data.length-1].stateNumber).classList.add("btn-success");
       },
       error => console.log(error)
     );

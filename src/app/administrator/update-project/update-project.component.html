@@ -66,11 +66,11 @@
     </div>
   </div>
   <hr>
-  <div class="col-12 outlay" *ngIf="isPm || isSuperUser">
+  <div class="col-12 outlay">
     <div class="row">
       <h2>Deadline</h2>
     </div>
-    <div class="col-xs-1" align="center" *ngIf="isSuperUser">
+    <div class="col-xs-1" align="center" *ngIf="!isPm">
       <p *ngIf="!project.deadline">Loyiha muddati hozircha belgilanmagan.</p>
       <p *ngIf="deadline">Loyiha {{deadline}} kun muddat oladi.</p>
     </div>

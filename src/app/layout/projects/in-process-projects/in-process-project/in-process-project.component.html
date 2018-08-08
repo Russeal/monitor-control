@@ -1,15 +1,18 @@
 <div class="col-12 row projectDetail" *ngIf="project">
-  <div class="row" style="margin: 0 auto">
-    <h4 style="padding: 15px; margin: unset"><b>Loyihaning holati </b></h4>
-    <button class="btn btn-info" id="state2" disabled>Planning</button>
-    <button class="btn btn-info" id="state3" disabled>In Process</button>
-    <button class="btn btn-info" id="state4" disabled>Test</button>
-    <button class="btn btn-info" id="state5" disabled>Finished</button>
+  <div class="row firstRow">
+    <h4><b>Loyihaning holati </b></h4>
+    <button class="btn btn-info" id="state2" disabled>Rejaga kiritilgan<br/>{{dates[0]}}</button>
+    <button class="btn btn-info" id="state3" disabled>Boshlangan<br/>{{dates[1]}}</button>
+    <button class="btn btn-info" id="state4" disabled>Sinov muddatida<br/>{{dates[2]}}</button>
+    <button class="btn btn-info" id="state5" disabled>Tugatilgan<br/>{{dates[3]}}</button>
   </div>
   <h2 class="col-12">{{project.name}}</h2>
   <div class="col-12 col-lg-8 row" style="margin: 0 auto;">
     <div class="col-12 col-md-6 row proMinInfDeps">
       <h4><i>Loyiha rahbari:</i> {{project.profile.firstName}} {{project.profile.lastName}}</h4>
+      <br>
+      <p>Loyiha boshlangan sana: <span style="color: blue">{{dates[1]}}</span></p>
+      <p>Loyiha muddati: <span style="color: blue">{{project.deadline}} kun</span><span *ngIf="isPM"> (<a (click)="prolong.show()" style="color: red">cho'zish</a>)</span></p>
       <br>
       <p><i>Tavsif:</i> {{project.description}}</p>
       <br>
@@ -48,5 +51,33 @@
         <app-one-engineer [engineer] = 'emp'></app-one-engineer>
       </div>
     </div>
+  </div>
+</div>
+
+<a (click)="prolong.hide()" id="changewarner"></a>
+<div mdbModal #prolong="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document" style="margin-top: 10%">
+    <form class="modal-content" (submit) = "changeDeadline()">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Loyiha muddatini cho'zish</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="prolong.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body justify-content-md-center">
+        
+        <p style="color: red; text-align: center" *ngIf="isErr1">* Amaldagi kalit so'zni xato kiritdingiz!</p>
+        <p style="color: red; text-align: center" *ngIf="isErr2">* Yangi kalit so'zni xato kiritdingiz!</p>
+
+        <div class="md-form col-9" style="margin: 1.5rem auto">
+          <input mdbInputDirective type="number" id="newDeadline" name="newDeadline" class="form-control" [(ngModel)]="deadline" required>
+          <label for="newDeadline" style="margin-left: 15px">Yangi muddatni kiriting</label>
+        </div>
+            
+      </div>
+      <div class="modal-footer" style="border-top: unset">
+        <button type="submit" class="btn btn-primary btn-sm waves-light" data-dismiss="modal" mdbRippleRadius>O'zgartirish</button>
+      </div>
+    </form>
   </div>
 </div>

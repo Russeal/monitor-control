@@ -79,10 +79,21 @@ export class EditProfileComponent implements OnInit {
       if (this.oldPass !== this.newPass && this.newPass === this.newPass2) {
         this.isErr2 = false;
 
+        var newAuth = new ProfileDto();
+        newAuth.login = "admin";
+        newAuth.password = this.newPass;
+        this.profileService.UpdateLoginPass(newAuth).subscribe(
+          (data) => {
+            if (data.state === 1) {
+              document.getElementById("warnwarner").click();
+              localStorage.clear();
+              this.router.navigate(['log-in']);
+            }
+          },
+          error => console.log(error)
+        );
 
 
-        // localStorage.clear();
-        // this.router.navigate(['log-in']);
       } else {
         this.isErr2 = true;
       }

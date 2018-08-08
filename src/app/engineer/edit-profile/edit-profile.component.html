@@ -87,10 +87,11 @@
   </form>
 </div>
 
-<button class="btn btninfo" (click)="warn.show()">smth</button>
+<button class="btn btn-outline-info btn-sm float-right" (click)="warn.show()" *ngIf="profile">Kalit so'zni o'zgartirish</button>
+<a (click)="warn.hide()" id="warnwarner"></a>
 <div mdbModal #warn="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md" role="document" style="margin-top: 10%">
-    <form class="modal-content">
+    <form class="modal-content" (submit) = "changePassword()">
       <div class="modal-header text-center">
         <h4 class="modal-title w-100 font-weight-bold">Kalit so'zni o'zgartirish</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="warn.hide()">
@@ -103,23 +104,23 @@
         <p style="color: red; text-align: center" *ngIf="isErr2">* Yangi kalit so'zni xato kiritdingiz!</p>
 
         <div class="md-form col-9" style="margin: 1.5rem auto">
-          <input mdbInputDirective type="password" id="oldPass" name="oldPass" class="form-control" [(ngModel)]="oldPass">
+          <input mdbInputDirective type="password" id="oldPass" name="oldPass" class="form-control" [(ngModel)]="oldPass" required>
           <label for="oldPass" style="margin-left: 15px">Hozirgi kalit so'z</label>
         </div>
 
         <div class="md-form col-9" style="margin: 1.5rem auto">
-          <input mdbInputDirective type="password" id="newPass" name="newPass" class="form-control" [(ngModel)]="newPass">
+          <input mdbInputDirective type="password" id="newPass" name="newPass" class="form-control" [(ngModel)]="newPass" required>
           <label for="newPass" style="margin-left: 15px">Yangi kalit so'z</label>
         </div>
 
         <div class="md-form col-9" style="margin: 1.5rem auto">
-            <input mdbInputDirective type="password" id="newPass2" name="newPass2" class="form-control" [(ngModel)]="newPass2">
+            <input mdbInputDirective type="password" id="newPass2" name="newPass2" class="form-control" [(ngModel)]="newPass2" required>
             <label for="newPass2" style="margin-left: 15px">Yangi kalit so'zni qaytaring</label>
         </div>
             
       </div>
       <div class="modal-footer" style="border-top: unset">
-        <button type="button" class="btn btn-primary btn-sm waves-light" data-dismiss="modal" (click)="changePassword()" mdbRippleRadius>O'zgartirish</button>
+        <button type="submit" class="btn btn-primary btn-sm waves-light" data-dismiss="modal" (click)="changePassword()" mdbRippleRadius>O'zgartirish</button>
       </div>
     </form>
   </div>

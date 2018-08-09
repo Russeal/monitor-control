@@ -27,6 +27,7 @@ export class InProcessProjectComponent implements OnInit {
               private profileService: ProfileService,
               private projectService: ProjectsService,
               private projectUtilService: ProjectUtilService) {
+                this.dates = [];
   }
 
   ngOnInit() {

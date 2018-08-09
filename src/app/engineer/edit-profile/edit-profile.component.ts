@@ -55,7 +55,6 @@ export class EditProfileComponent implements OnInit {
     this.profileService.getMyProfile().subscribe(
       (data) => {
         this.profile = data;
-        console.log(data);
         
         if(data.birthDate) {
           this.birthday = new Date(data.birthDate);
@@ -80,7 +79,7 @@ export class EditProfileComponent implements OnInit {
         this.isErr2 = false;
 
         var newAuth = new ProfileDto();
-        newAuth.login = "admin";
+        newAuth.login = this.profile.login;
         newAuth.password = this.newPass;
         this.profileService.UpdateLoginPass(newAuth).subscribe(
           (data) => {
